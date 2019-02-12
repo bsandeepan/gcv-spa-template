@@ -1,0 +1,30 @@
+{
+    "settings" : {
+        "colors": []
+    },
+
+    "landing" : {
+        "displayName" : "Sandeepan",
+        "taglineWork" : "Web Developer and Nihilist."
+    },
+
+    "profile" : {
+        "profileName" : "Sandeepan Bhattacharyya",
+        "dateOfBirth" : {
+            "date" : 30,
+            "month" : 2,
+            "year" : 2020
+        },
+        "job" : "Wed Developer",
+        "profilePicture": "imageName.format",
+        "aboutMe" : "within 50 - 100 words please.",
+        "country" : "country name",
+        "city" : "city name",
+        "experience": [],
+        "education": []
+    },
+
+    "portfolio" : {},
+
+    "contact" : {}
+}
