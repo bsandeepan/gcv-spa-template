@@ -1,0 +1,5 @@
+# Ignore the contents of future directory
+future/
+
+# ignore these files
+package-lock.json
