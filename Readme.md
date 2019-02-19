@@ -48,6 +48,10 @@ Structure of `data.js` is as below -
    
 1. `landing` : This section contains fields displayed in landing page -  
    
+   * `brandName` : Contains the text that will be displayed as Brand Name, on top left of Navbar. Clicking the brand name will lead you to the top of the website, the landing page.  
+   
+   * `greeting` : Contains the greeting phrase. By default, I set it to "Hi!" but you can greet visitors in Klingon (nuqneH) too.  
+
    * `displayName` : This name will be displayed in CAPITAL. I advise to use only your first name here for better view across platforms.  
    
    * `taglineWork` : This field should hold your job profile. For example, a tagline for me could be _"Full Stack Web Developer and Nihilist"._  
@@ -241,7 +245,7 @@ Structure of `settings.js` is as below -
 
 1. `blog` : A url to your blog site. If you have a blog, put the link here and a "Blog" button will appear in Navigation Bar. If you do not have any, keep this field empty.  
 
-2. `changeColor` : A Boolean switch to enable daily color change. Set to `true` by default.  
+2. `changeTheme` : A Boolean switch to enable daily theme color change. Set to `true` by default.  
 
 3. `colors` : An array of seven colors for seven days of week. It matches with the output of Javascript's Date() object's getDay() method and sets the color accordingly. The structure is as follows -  
 

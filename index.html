@@ -6,17 +6,149 @@
         <title>A Glitch in your CV!</title>
         <!-- Viewport Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- urgent style -->
+        <style>
+            .hideHard {
+                display: none !important;
+            }
+            .hideVisual {
+                position: absolute; 
+                overflow: hidden; 
+                clip: rect(0 0 0 0); 
+                height: 1px; width: 1px; 
+                margin: -1px;
+                padding: 0;
+                border: 0;
+            }
+        </style>
         <!-- Loading Fallback JS -->
         <script src="./js/lib/fallback.min.js"></script>
         <!-- Load the Data -->
+        <script src="./resources/settings.js"></script>
+        <script src="./resources/data.js"></script>
+        <!-- Load the Stylesheets -->
         <script src="./js/styleloader.js"></script>
         <!-- Font CDNs -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|VT323" rel="stylesheet">
         <!--  CSS CDNs -->
-        <!-- Custom CSS Stylesheets -->
-        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
     </head>
-    <body>
+
+    <body class="has-navbar-fixed-top-bottom">
+        <!-- Framelines -->
+        <div id="framelines">
+            <div class="frame-line frame-top"></div>
+            <div class="frame-line frame-bottom"></div>
+            <div class="frame-line frame-left"></div>
+            <div class="frame-line frame-right"></div>
+        </div>
+
+        <!-- Preloader -->
+        <section id="preloader">
+            <!-- Loader Heading/Text goes here -->
+            <h1 id="loaderHeading"></h1>
+            <!-- Loader Animation HTML Content goes here -->
+            <div id="loaderHTML"></div>
+        </section>
+
+        <!-- main SPA -->
+        <section id="gcvSPA" class="hideHard">
+            <!-- Navbar Top -->
+            <nav id="top-nav" class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="#">
+                            <strong id="brandName"></strong>
+                        </a>
+                    
+                        <a role="button" id="nav-toggle" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="gcvNavbarItems">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    
+                    <div id="gcvNavbarItems" class="navbar-menu">
+                        <div class="navbar-start">
+                            <!-- <a class="navbar-item is-tab">Blog</a> -->
+                        </div>
+                        <div class="navbar-end">
+                            <a class="navbar-item is-tab" href="#profile">Profile</a>
+                            <a class="navbar-item is-tab" href="#portfolio">Portfolio</a>
+                            <a class="navbar-item is-tab" href="#contact">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+    
+            <!-- Landing Page Content -->
+            <section id="gcv-landing" class="hero is-medium">
+                <div class="hero-body">
+                    <div class="container content has-text-centered">
+                        <h1 id="landingTitle" class="title is-1"></h1>
+                        <h2 id="landingTag" class="subtitle is-6 wtag-space"></h2>
+                    </div>
+                </div>
+                <section id="landingscroll" class="demo">
+                        <a href="#profile"><span></span>Below</a>
+                </section>
+            </section>
+            
+            <!-- Profile Page Content -->
+            <section id="profile" class="sections">
+                <section class="hero">
+                    <div class="hero-body">
+                        <div class="container content has-text-centered">
+                            <h1 class="title is-1">PROFILE</h1>
+                        </div>
+                    </div>
+                </section>  
+            </section>
+
+            <!-- Portfolio Page Content -->
+            <section id="portfolio" class="sections">
+                <section class="hero">
+                    <div class="hero-body">
+                        <div class="container content has-text-centered">
+                            <h1 class="title is-1">PORTFOLIO</h1>
+                        </div>
+                    </div>
+                </section>  
+            </section>
+
+            <!-- Contact Page Content -->
+            <section id="contact" class="sections">
+                <section class="hero">
+                    <div class="hero-body">
+                        <div class="container content has-text-centered">
+                            <h1 class="title is-1">CONTACT</h1>
+                        </div>
+                    </div>
+                </section>  
+            </section>
+    
+            <!-- Navbar Bottom (used as a footer) -->
+            <nav id="bottom-nav-footer" class="navbar is-transparent is-fixed-bottom" role="navigation" aria-label="main navigation">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <p id="credits"></p>
+                    </div>
+                    
+                    <div class="navbar-menu">
+                        <div class="navbar-start">
+                            <!-- <a class="navbar-item is-tab">Blog</a> -->
+                        </div>
+                        <div class="navbar-end">
+                            <!-- <a class="navbar-item is-tab" href="#profile">Profile</a>
+                            <a class="navbar-item is-tab" href="#portfolio">Portfolio</a>
+                            <a class="navbar-item is-tab" href="#contact">Contact</a> -->
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </section>
+        
         <!-- JS Scripts -->
-        <script src="./js/main.js"></script>
+        <script src="./js/gcvmain.js"></script>
     </body>
 </html>
