@@ -76,9 +76,7 @@ Structure of `data.js` is as below -
    
    * `aboutMe` : Your brief bio. Seriously, recruiters do not have time to go through a 500-word essay. Keep it within 50 - 100 words, 2-3 sentences, and to the point. This is a pitch, not an autobiography.  
 
-   * `country` : Your Country of Citizenship.  
-   
-   * `city` : Your residential city.
+   * `residence` : Your city/town/village of residence (present preffered) followed by state (optional), followed by country.  
 
    * `experience` : An array of your work experience. You do not need to understand array to add details here (or in the following arrays in `data.js` file) but you can read about them [here][infoArray]. If you are familliar with them, know that we are not adding them chronologically (from Past to Present) and processing them in a reverse method in the DOM (**website** for non-tech guys). Instead, we are adding them in a reverse chronological order (from Present to Past). In other words, the latest experience lies in the front (at `arr[0]` for geeks) and the oldest experience lies in the end of array. Now, we insert the experience data as a JS object with following fields -  
       * `start` : This section should hold a string containing month and year info of when you started working there. The format should be "Mmm YYYY".  
@@ -247,7 +245,9 @@ Structure of `settings.js` is as below -
 
 2. `changeTheme` : A Boolean switch to enable daily theme color change. Set to `true` by default.  
 
-3. `colors` : An array of seven colors for seven days of week. It matches with the output of Javascript's Date() object's getDay() method and sets the color accordingly. The structure is as follows -  
+3. `todayTheme` : Theme color by default is _dodgerblue_. If `changeTheme` is not disabled, then it will change on daily basis.  
+
+4. `colors` : An array of seven colors for seven days of week. It matches with the output of Javascript's Date() object's getDay() method and sets the color accordingly. The structure is as follows -  
 
 | Array Index | Day of Week | Colors |
 |:---:|:--- |:--- |
@@ -261,7 +261,7 @@ Structure of `settings.js` is as below -
 
 If you desire to change the color of Wednesday, you will have to quote the color code (hex or rgb or whatevet) in "" and paste it in the 4th position i.e. 3rd index of the array.  
 
-4. `toLoad` : An JS object that contains scripts that needs to be loaded. **_PLEASE DO NOT REMOVE ** the scripts pre-added there._ Also, read about how `fallback.js` works [here][fallbackGithubDoc] and this [article][FBMfallbackjs] to understand why and how `fallback.load()` works and how `Settings.toload` works with it. 
+5. `toLoad` : An JS object that contains scripts that needs to be loaded. **_PLEASE DO NOT REMOVE ** the scripts pre-added there._ Also, read about how `fallback.js` works [here][fallbackGithubDoc] and this [article][FBMfallbackjs] to understand why and how `fallback.load()` works and how `Settings.toload` works with it. 
 
 ### Resources:
 Name of code resources.  

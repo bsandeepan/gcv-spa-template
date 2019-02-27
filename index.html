@@ -6,7 +6,7 @@
         <title>A Glitch in your CV!</title>
         <!-- Viewport Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- urgent style -->
+        <!-- hide style -->
         <style>
             .hideHard {
                 display: none !important;
@@ -26,17 +26,16 @@
         <!-- Load the Data -->
         <script src="./resources/settings.js"></script>
         <script src="./resources/data.js"></script>
-        <!-- Load the Stylesheets -->
+        <!-- Load the Stylesheets and JS Scripts-->
         <script src="./js/styleloader.js"></script>
         <!-- Font CDNs -->
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|VT323" rel="stylesheet">
         <!--  CSS CDNs -->
-        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
     </head>
 
     <body class="has-navbar-fixed-top-bottom">
         <!-- Framelines -->
-        <div id="framelines">
+        <div id="framelines" class="is-hidden-touch">
             <div class="frame-line frame-top"></div>
             <div class="frame-line frame-bottom"></div>
             <div class="frame-line frame-left"></div>
@@ -80,19 +79,24 @@
                     </div>
                 </div>
             </nav>
-    
+
+            <!-- padding the top to manage spacing -->
+            <section class="is-hard-padded"></section>
+
             <!-- Landing Page Content -->
             <section id="gcv-landing" class="hero is-medium">
                 <div class="hero-body">
                     <div class="container content has-text-centered">
                         <h1 id="landingTitle" class="title is-1"></h1>
-                        <h2 id="landingTag" class="subtitle is-6 wtag-space"></h2>
+                        <h3 id="landingTag" class="subtitle is-5 wtag-space"></h3>
                     </div>
                 </div>
-                <section id="landingscroll" class="demo">
+                <section id="landingscroll" class="scroller">
                         <a href="#profile"><span></span>Below</a>
                 </section>
             </section>
+
+            <section class="is-padded"></section>
             
             <!-- Profile Page Content -->
             <section id="profile" class="sections">
@@ -102,8 +106,232 @@
                             <h1 class="title is-1">PROFILE</h1>
                         </div>
                     </div>
-                </section>  
+                </section>
+
+                <section id="about" class="container">
+                    <h3 class="subtitle is-5">About Me:</h3>
+
+                    <div class="columns">
+                        <div class="column is-one-fifth is-flex is-flex-centered">
+                            <figure class="image is-128x128">
+                                <img id="personImage" class="is-rounded" src="">
+                            </figure>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-justified">
+                                <p id="personAboutMe"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-flex-tablet is-flex-row-rev">
+                         <!-- Info fields -->
+                        <div class="column content">
+                            <div class="columns">
+                                <div class="column ">
+                                    <p><span class="fields">Name: </span><span id="personName"></span></p>
+                                </div>
+                                <div class="column ">
+                                    <p><span class="fields">Age: </span><span id="personAge"></span></p>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column ">
+                                    <p><span class="fields">Job: </span><span id="personJob"></span></p>
+                                </div>
+                                <div class="column ">
+                                    <p><span class="fields">Residence: </span><span id="personResidence"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- download CV link -->
+                        <div class="column is-one-fifth is-flex is-flex-full-centered is-flex-col-rev">
+                            <p class="content is-small">(to dig deeper)</p>
+                            <a href="#" class="button is-primary">Download CV</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="is-padded"></section>
+
+                <!-- Experience and Education -->
+                <section class="columns container">
+                    <!-- experience section -->
+                    <div id="experience" class="column is-full-mobile is-half-desktop">
+                        <h4 class="subtitle is-5">Expeirence:</h4>
+                        <div class="timeline">
+                                <div class="tl-entry">
+                                    <div class="tl-title">
+                                        <h3>2014 - Present</h3>
+                                    </div>
+                                    <div class="tl-body">
+                                        <h3><strong>Bekar chele</strong></h3>
+                                        <h3><em>Baper Hotel</em></h3>
+                                        <p id="">Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.</p>
+                                        <ul>
+                                            <li>Rerum sit libero possimus amet excepturi</li>
+                                            <li>Exercitationem enim dolores sunt praesentium dolorum praesentium</li>
+                                            <li>Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tl-entry">
+                                    <div class="tl-title">
+                                        <h3>2014 - Present</h3>
+                                    </div>
+                                    <div class="tl-body">
+                                        <h3><strong>Bekar chele</strong></h3>
+                                        <h3><em>Baper Hotel</em></h3>
+                                        <p id="">Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.</p>
+                                        <ul>
+                                            <li>Rerum sit libero possimus amet excepturi</li>
+                                            <li>Exercitationem enim dolores sunt praesentium dolorum praesentium</li>
+                                            <li>Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            <div class="tl-end"></div>
+                        </div>
+                    </div>
+
+                    <!-- education section -->
+                    <div id="education" class="column is-full-mobile is-half-desktop">
+                        <h4 class="subtitle is-5">Education:</h4>
+                        <div class="timeline">
+                            <div class="tl-entry">
+                                <div class="tl-title">
+                                    <h3>2014 - Present</h3>
+                                </div>
+                                <div class="tl-body">
+                                    <h3><strong>Bekar chele</strong></h3>
+                                    <h3><em>Baper Hotel</em></h3>
+                                    <p id="">Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.</p>
+                                    <ul>
+                                        <li>Rerum sit libero possimus amet excepturi</li>
+                                        <li>Exercitationem enim dolores sunt praesentium dolorum praesentium</li>
+                                        <li>Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tl-entry">
+                                <div class="tl-title">
+                                    <h3>2014 - Present</h3>
+                                </div>
+                                <div class="tl-body">
+                                    <h3><strong>Bekar chele</strong></h3>
+                                    <h3><em>Baper Hotel</em></h3>
+                                    <p id="">Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.</p>
+                                    <ul>
+                                        <li>Rerum sit libero possimus amet excepturi</li>
+                                        <li>Exercitationem enim dolores sunt praesentium dolorum praesentium</li>
+                                        <li>Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tl-end"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="is-padded"></section>
+
+                <!-- hobbies, languages, skillset -->
+                <section class="container">
+                    <div class="columns is-multiline">
+                        <div id="hobby" class="column is-half">
+                            <h4 class="subtitle is-5">Hobbies:</h4>
+                            <ul>
+                                <li>One</li>
+                                <li>One</li>
+                                <li>One</li>
+                            </ul>
+                        </div>
+                        <div id="languages" class="column is-half">
+                            <h4 class="subtitle is-5">Communication:</h4>
+                            <table id="lang-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth is-hidden-touch">
+                                <thead>
+                                    <tr>
+                                        <th>Language</th>
+                                        <th>Level</th>
+                                        <th><abbr title="Certification">Cert</abbr></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>English</td><td>Pro</td><td>SESET2018</td></tr>
+                                    <tr><td>English</td><td>Pro</td><td>SESET2018</td></tr>
+                                    <tr><td>English</td><td>Pro</td><td>SESET2018</td></tr>
+                                </tbody>
+                            </table>
+
+                            <ul id="lang-list" class="is-hidden-desktop">
+                                <li>English
+                                    <ul>
+                                        <li>Level: /$Pro/</li>
+                                        <li>Cert: /SESET2018/</li>
+                                    </ul>
+                                </li>
+                                <li>English
+                                    <ul>
+                                        <li>Pro</li>
+                                        <li>SESET2018</li>
+                                    </ul>
+                                </li>
+                                <li>English
+                                    <ul>
+                                        <li>Pro</li>
+                                        <li>SESET2018</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="skillset" class="column is-full">
+                            <h4 class="subtitle is-5">Skillset:</h4>
+                            <div class="columns is-multiline">
+                                <div class="column is-4">
+                                    <h4 class="subtitle is-6"><strong>Web Development</strong></h4>
+                                    <ul>
+                                        <li>HTML5</li>
+                                        <li>CSS3</li>
+                                        <li>SASS</li>
+                                        <li>Javascript</li>
+                                    </ul>
+                                </div>
+
+                                <div class="column is-4">
+                                    <h4 class="subtitle is-6"><strong>Web Development</strong></h4>
+                                    <ul>
+                                        <li>HTML5</li>
+                                        <li>CSS3</li>
+                                        <li>SASS</li>
+                                        <li>Javascript</li>
+                                    </ul>
+                                </div>
+
+                                <div class="column is-4">
+                                    <h4 class="subtitle is-6"><strong>Web Development</strong></h4>
+                                    <ul>
+                                        <li>HTML5</li>
+                                        <li>CSS3</li>
+                                        <li>SASS</li>
+                                        <li>Javascript</li>
+                                    </ul>
+                                </div>
+
+                                <div class="column is-4">
+                                    <h4 class="subtitle is-6"><strong>Web Development</strong></h4>
+                                    <ul>
+                                        <li>HTML5</li>
+                                        <li>CSS3</li>
+                                        <li>SASS</li>
+                                        <li>Javascript</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </section>
+
+            <section class="is-padded"></section>
 
             <!-- Portfolio Page Content -->
             <section id="portfolio" class="sections">
@@ -113,8 +341,16 @@
                             <h1 class="title is-1">PORTFOLIO</h1>
                         </div>
                     </div>
-                </section>  
+                </section>
+
+                <section id="publications" class="container">
+                    <p><strong><a href="#" class="pubtitle fields">Chaos Theory</a>: </strong><span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, animi.</span></p>
+                    <p><strong><a href="#" class="pubtitle fields">Chaos Theory</a>: </strong><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ea consectetur facilis aliquid aspernatur autem molestias consequatur error possimus iusto.</span></p>
+                    <p><strong><a href="#" class="pubtitle fields">Chaos Theory</a>: </strong><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi impedit fuga consectetur necessitatibus, accusantium tenetur.</span></p>
+                </section>
             </section>
+
+            <section class="is-padded"></section>
 
             <!-- Contact Page Content -->
             <section id="contact" class="sections">
@@ -124,9 +360,29 @@
                             <h1 class="title is-1">CONTACT</h1>
                         </div>
                     </div>
-                </section>  
+                </section>
+                
+                <section class="container padded-horizontal">
+                    <div class="columns is-multiline">
+                        <div class="column is-full" id="contactStatement">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea nesciunt non quia, corrupti labore sunt obcaecati et porro expedita hic!</p>
+                        </div>
+                        <div class="column is-4">
+                            <p><span class="fields">Phone: </span><span id="personPhone">+(9874)-563210</span></p>
+                        </div>
+                        <div class="column is-4">
+                            <p><span class="fields">Email: </span><span id="personEmail">your.name@mail.com</span></p>
+                        </div>
+                        <div class="column is-full">
+                            <p><span class="fields">Address: </span><span id="personAddress">Apt. 69, 123/4 XYZ Ave., Kolkata - 700789, West Bengal, India</span></p>
+                        </div>
+                    </div>
+                </section>
             </section>
-    
+            
+            <!-- padding the bottom to manage spacing -->
+            <section class="is-hard-padded"></section>
+
             <!-- Navbar Bottom (used as a footer) -->
             <nav id="bottom-nav-footer" class="navbar is-transparent is-fixed-bottom" role="navigation" aria-label="main navigation">
                 <div class="container">
@@ -148,7 +404,7 @@
             </nav>
         </section>
         
-        <!-- JS Scripts -->
+        <!-- Main JS Scripts -->
         <script src="./js/gcvmain.js"></script>
     </body>
 </html>

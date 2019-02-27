@@ -13,29 +13,30 @@
         profile : {
             profileName : "Sandeepan Bhattacharyya",
             dateOfBirth : {
-                date : 30,
-                month : 2,
-                year : 2020
+                date : 17,
+                month : 8,
+                year : 1995
             },
             job : "Wed Developer",
-            profilePicture: "imageName.format",
-            aboutMe : "within 50 - 100 words please.",
-            country : "country name",
-            city : "city name",
+            profilePicture: "Shockwave_0.jpg",
+            aboutMe : "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis hic culpa explicabo officiis illum necessitatibus tenetur perferendis, dolores cumque ipsam quos velit laboriosam similique. Consequuntur accusamus eum perferendis provident, quia, totam cupiditate ut fuga molestiae ad pariatur praesentium nihil ratione quibusdam unde nostrum voluptatem corporis veniam aperiam, doloremque sapiente facilis!",
+            residence: "Kolkata, India",
             experience: [
                 {
                     start : "Jan 2011",
                     end : "Dec 2012",
                     role : "Senior Web Developer",
                     company : "VBN Company",
-                    jobDesc : "another few words."
+                    jobDesc : "another few words.",
+                    jobDescMore : []
                 },
                 {
                     start : "Jan 2008",
                     end : "Dec 2010",
                     role : "Web Developer",
                     company : "ZXC Company",
-                    jobDesc : "a few words."
+                    jobDesc : "a few words.",
+                    highlights : []
                 }
             ],
             education: [
@@ -43,7 +44,9 @@
                     start : "May 2004",
                     end : "Mar 2007",
                     course : "B.Sc. (Hons) in Computer Science",
-                    under : "W.B.S.U. (West Bengal State University)"
+                    under : "W.B.S.U. (West Bengal State University)",
+                    studyDesc : "a few words",
+                    highlights : []
                 },
                 {
                     start : "May 2002",
@@ -100,10 +103,11 @@
                 {
                     type : "Web Development",
                     used : [
-                        "HTML",
-                        "CSS",
-                        "Python",
-                        "Javascript"
+                        "HTML5",
+                        "CSS3",
+                        "SASS",
+                        "Python 3.x",
+                        "Javascript (ES5, ES6, ESNext)"
                     ]
                 },
                 {
@@ -152,9 +156,17 @@
         },
     
         contact : {
+            statement : "A few words on how to contact you. Necessary if you choose to keep your contact info private.",
             phone : "+91 9876-543210",
             email : "your.name@mail.com",
-            addressOffice : "2120 S Michigan Ave, Chicago, IL 60616, USA"
+            address : "2120 S Michigan Ave, Chicago, IL 60616, USA",
+            catchMeOn : [
+                {
+                    name: "LinkedIn",
+                    icon : "",
+                    link: ""
+                }
+            ]
         }
     };
 
