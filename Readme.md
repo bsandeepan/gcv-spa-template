@@ -1,5 +1,7 @@
 # Project: Glitch CV Website Template
 
+# ATTENTION: PROJECT IS INCOMPLETE AND NOT FOR PUBLIC USE YET. ALL RIGHTS ARE RESERVED FOR THE TIME BEING! THANK YOU FOR YOUR PATIENCE!
+
 **_Details_ :** A CV/Portfolio SPA web template for all to use. Beware! There will be a Glitch in your CV!  
 
 ----
