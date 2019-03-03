@@ -62,14 +62,45 @@ ul li::before {
 .is-hard-padded {
   padding: 40px 0%;
 }
+.modal-card {
+  max-width: 700px;
+  max-height: 500px;
+}
+.modal-card-body p {
+  padding: 5px;
+}
+.card {
+  border-radius: 15px;
+}
+
+.card-image {
+  border: 5px solid white;
+}
+.card-image img {
+  border-radius: 10px;
+}
+.card-image:hover {
+  border-radius: 15px;
+  border: 5px solid black;
+  transition: border 1.5s;
+}
+
+/* grain of salt */
 
 /* 03. Media Queries */
+/* Responsive design for tab and onwards */
 @media (min-width: 769px) {
   .padded-horizontal {
     padding: 0 8%
   }
   #landingTitle {
     font-size: 4rem;
+  }
+}
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .modal-content, .modal-card, .card {
+      margin: auto;
   }
 }
 
@@ -116,6 +147,27 @@ ul li::before {
 /* 08. Portfolio Page Style */
 .pubtitle {
   font-size: 1.25rem;
+  font-style: oblique;
+}
+.project-license {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 2px 5px;
+  left: 0;
+  bottom: 0;
+  top: -2.1rem;
+  height: 2rem;
+  width: fit-content;
+  text-align: center;
+  background: whitesmoke;
+  box-shadow: 2px -2px 4px 2px #666; 
+}
+.project-heading, #contactStatement {
+  margin: 5px 0 0;
+  font-size: 1.2rem;
+  font-weight: 700;
   font-style: oblique;
 }
 /* 09. Contact Page Style */
@@ -239,7 +291,7 @@ ul li::before {
   margin: 0;
 }
 .tl-entry .tl-body {
-  margin: 0 0 1em;
+  margin: 0 0 1.5em;
   float: right;
   width: 66%;
   padding-left: 30px;

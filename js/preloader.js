@@ -12,7 +12,6 @@
  *      section as well. If so, identify your "targetID" element carefully and 
  *      proceed with caution as you change the code.
  * 
- * 3.   AfterLoaded Code: for things to do after entire website content is loaded.
  */
 
  ( function(){
@@ -30,19 +29,11 @@
             }
         }, timeout);
     }
-    
-    /** Toggle class for selected node. Uses querySelector() method */
-    function toggleVisible(selector, className, alreadyExists) {
-        if(alreadyExists) {document.querySelector(selector).classList.remove(className);}
-        else {document.querySelector(selector).classList.add(className);}
-    }
 
     // an object containing important IDs and classNames for easy maintainance and manipulation
     var preLoadStr = {
         framelineID : "#framelines",
         preloaderID: "#preloader",
-        mainBodyID : "#gcvSPA",
-        hideHardCL : "hideHard"
     };
 
     // After preloader section is loaded, do these manipulations
@@ -54,9 +45,11 @@
         // select the parent preloader node into a variable
         var queriedNode = document.querySelector(preLoadStr.preloaderID);
 
-        // insert Loading Header text content and font color from Settings
-        queriedNode.firstElementChild.innerText = Settings.preLoad.loaderHeading;
-        queriedNode.firstElementChild.style.color = Settings.todayTheme;
+        // insert Loading Header text content and font color from Settings (if exists)
+        if (Settings.preLoad.loaderHeading !== "") {
+            queriedNode.firstElementChild.innerText = Settings.preLoad.loaderHeading;
+            queriedNode.firstElementChild.style.color = Settings.todayTheme;
+        }
 
         // insert HTML content for loader animation
         queriedNode.lastElementChild.insertAdjacentHTML('afterbegin', Settings.preLoad.loaderHTML);
@@ -71,14 +64,4 @@
         }
     });
     //  2. Preloader Code (End)
-    
-
-    // 3. AfterLoaded Code (Begin)
-    // When ENTIRE window and document loading is done, do these
-    window.addEventListener('load', (event) => {
-        // toggle display state for preloader and main body
-        toggleVisible(preLoadStr.preloaderID, preLoadStr.hideHardCL, false);
-        toggleVisible(preLoadStr.mainBodyID, preLoadStr.hideHardCL, true);
-    });
-    // 3. AfterLoaded Code (End)
  })();

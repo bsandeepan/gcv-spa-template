@@ -3,7 +3,11 @@
     // An One-stop obj solution to maintain all DOM IDs and classnames(CL)
     // var Settings = window.Settings;
     // var Data = window.Data;
-    var DOMStrings = {
+    let DOMStrings = {
+        // general tags
+        hideHardCL : "hideHard",
+        hideVisualCL : "hideVisual",
+        checkCL : "checked",
         // landing page tags
         brandNameID : "brandName",
         displayNameID : "landingTitle",
@@ -14,15 +18,30 @@
         myNameID : "personName",
         myAgeID : "personAge",
         myJobID : "personJob",
-        myResidenceID : "personResidence"
+        myResidenceID : "personResidence",
+        expTLID : "tl-exp",
+        edTLID : "tl-ed",
+        hobbiesID : "hobby",
+        langTableID : "lang-table",
+        langListID : "lang-list",
+        skillSetID : "skillset",
         // portfolio page tags
+        publicationID : "publications",
+        TagFiltersID : "tagbuttons",
+        portfolioListID : "portfoliolist",
+        projectCL : "project",
+        filterInputCL : "inputfilter",
         // contact page tags
+        myStatementID : "contactStatement",
+        personPhoneID : "personPhone",
+        personEmailID : "personEmail",
+        personAddressID : "personAddress"
     }
 
     /**Calculates age in years (x years) */
     function calculate_age(dobYear, dobMonth, dobDate)
     {
-        var tDate, tYear, tMonth, tDay, ageYears, ageText="";
+        let tDate, tYear, tMonth, tDay, ageYears, ageText="";
         tDate = new Date();
         tYear = tDate.getFullYear();
         tMonth = tDate.getMonth();
@@ -35,25 +54,338 @@
         return ageText;
     }
 
-    
+    /**creates an unordered list of given array of items */
+    function listAll (arr) {
+        let item, listItem="";
+        arr.forEach(el => {
+            item = `<li>${el}</li>`;
+            listItem += item;
+        });
+        return `<ul>${listItem}</ul>`;
+    }
+   
 
-    // Loading landing page data
-    document.getElementById(DOMStrings.brandNameID).innerText = Data.landing.brandName;
-    let greetStr = `${Data.landing.greeting} I am ${Data.landing.displayName}`;
-    document.getElementById(DOMStrings.displayNameID).innerText = greetStr.toUpperCase();
-    document.getElementById(DOMStrings.taglineWorkID).innerText = Data.landing.taglineWork;
+    document.addEventListener('DOMContentLoaded', (ev) => {
+        // Loading landing page data
+        document.getElementById(DOMStrings.brandNameID).innerText = Data.landing.brandName;
+        let greetStr = `${Data.landing.greeting} I am ${Data.landing.displayName}`;
+        document.getElementById(DOMStrings.displayNameID).innerText = greetStr.toUpperCase();
+        document.getElementById(DOMStrings.taglineWorkID).innerText = Data.landing.taglineWork;
 
-    // loading profile page data
-    document.getElementById(DOMStrings.myImageID).src = Settings.imagePath + Data.profile.profilePicture;
-    document.getElementById(DOMStrings.myAboutMeID).innerText = Data.profile.aboutMe;
-    document.getElementById(DOMStrings.myNameID).innerText = Data.profile.profileName;
-    document.getElementById(DOMStrings.myJobID).innerText = Data.profile.job;
-    document.getElementById(DOMStrings.myResidenceID).innerText = Data.profile.residence;
-    document.getElementById(DOMStrings.myAgeID).innerText = calculate_age(  Data.profile.dateOfBirth.year,
-                                                                            Data.profile.dateOfBirth.month,
-                                                                            Data.profile.dateOfBirth.date
-    );
+        // loading profile page data
+        document.getElementById(DOMStrings.myImageID).src = Data.profile.profilePicture;
+        document.getElementById(DOMStrings.myAboutMeID).innerText = Data.profile.aboutMe;
+        document.getElementById(DOMStrings.myNameID).innerText = Data.profile.profileName;
+        document.getElementById(DOMStrings.myJobID).innerText = Data.profile.job;
+        document.getElementById(DOMStrings.myResidenceID).innerText = Data.profile.residence;
+        document.getElementById(DOMStrings.myAgeID).innerText = calculate_age(  Data.profile.dateOfBirth.year,
+                                                                                Data.profile.dateOfBirth.month,
+                                                                                Data.profile.dateOfBirth.date
+        );
 
-    // loading experience data
-}
-)();
+        // loading experience and education data
+        (function() {
+            // looping in reverse through the experience array (to avoid unnecessary reduce() to do forEach() :P)
+            for(let i = (Data.profile.experience.length - 1); i >= 0; i--) {
+                let listStr, expStr, el = Data.profile.experience[i];
+                // if no end date is given, mark it as present
+                if (el.end === "") el.end = "Present";
+                // if highlights are given, make a list of them
+                if (el.highlights[0]) {listStr = listAll(el.highlights);}
+                else {listStr = "";}
+
+                // string generating markup content for experience entries
+                expStr = `
+                <div class="tl-entry">
+                    <div class="tl-title">
+                        <h3>${el.start}</h3><h3>to</h3><h3>${el.end}</h3>
+
+                    </div>
+                    <div class="tl-body">
+                        <h3><strong>${el.role}</strong></h3>
+                        <h3><em>${el.company}</em></h3>
+                        <p>${el.jobDesc}</p>
+                        ${listStr}
+                    </div>
+                </div>`;
+
+                // inserting generated markup string in experience section
+                document.getElementById(DOMStrings.expTLID).insertAdjacentHTML('afterbegin', expStr);
+            }
+
+            // looping in reverse through the education array (to avoid unnecessary reduce() to do forEach() :P)
+            for(let i = (Data.profile.education.length - 1); i >= 0; i--) {
+                let listStr, expStr, el = Data.profile.education[i];
+                // if no end date is given, mark it as present
+                if (el.end === "") el.end = "Present";
+                // if highlights are given, make a list of them
+                if (el.highlights[0]) {listStr = listAll(el.highlights);}
+                else {listStr = "";}
+
+                // string generating markup content for education entries
+                expStr = `
+                <div class="tl-entry">
+                    <div class="tl-title">
+                    <h3>${el.start}</h3><h3>to</h3><h3>${el.end}</h3>
+                    </div>
+                    <div class="tl-body">
+                        <h3><strong>${el.course}</strong></h3>
+                        <h3><em>${el.under}</em></h3>
+                        <p>${el.studyDesc}</p>
+                        ${listStr}
+                    </div>
+                </div>`;
+
+                // inserting generated markup string in education section
+                document.getElementById(DOMStrings.edTLID).insertAdjacentHTML('afterbegin', expStr);
+            }
+
+            // loading hobbies data
+            let hobbyStr = listAll(Data.profile.hobbies);
+            document.getElementById(DOMStrings.hobbiesID).insertAdjacentHTML('beforeend',hobbyStr);
+
+            // loading languages data
+            let langRow, langRowList = "", langTableStr = "", langItem, langItemList = "";
+            Data.profile.language.forEach(function (el) {
+                // generating a list of rows for language table
+                if(el.cert === "") el.cert = "None";
+                langRow = `<tr><td>${el.lang_name}</td><td>${el.level}</td><td>${el.cert}</td></tr>`;
+                langRowList += langRow;
+
+                // generatign a list for language list
+                langItem = `<li>${el.lang_name}<ul><li>${el.level}</li><li>${el.cert}</li></ul></li>`;
+                langItemList += langItem;
+            });
+            // creating the final table body html string
+            langTableStr = `<tbody>${langRowList}</tbody>`;
+            // inserting generated table body and list strings in relevant Nodes.
+            document.getElementById(DOMStrings.langTableID).insertAdjacentHTML('beforeend', langTableStr);
+            document.getElementById(DOMStrings.langListID).insertAdjacentHTML('beforeend', langItemList);
+
+            // loading skillset data
+            Data.profile.skillset.forEach(function (el) {
+                let usedList, skillStr;
+                // generate a list of all used skills
+                if(el.used[0]) {usedList = listAll(el.used);}
+                else {usedList = "";}
+                // generate a markup string for skillset column
+                skillStr = `
+                <div class="column is-4">
+                    <h4 class="subtitle is-6"><strong>${el.type}</strong></h4>
+                    ${usedList}
+                </div>`;
+                // inserting skillset column markup string in relevant Node.
+                document.getElementById(DOMStrings.skillSetID).lastElementChild.insertAdjacentHTML('beforeend', skillStr);
+            });
+        })();
+
+        // loading portfolio page data
+        // loading publications
+        if(Data.portfolio.display.publication) {
+            let pubStr = "", pub;
+            // generating a publication string and making a list of them
+            Data.portfolio.publication.forEach(function (el) {
+                if (el.link === "") el.link = `http://wiki.lib.sun.ac.za/images/5/5d/Online_Visibility_Guidelines.pdf`;
+                pub = `<p><strong><a target="_blank" href="${el.link}" class="pubtitle fields">${el.title}</a>: </strong><span>${el.desc}</span></p>`;
+                pubStr += pub;
+            });
+            document.getElementById(DOMStrings.publicationID).insertAdjacentHTML('beforeend', pubStr);
+        }
+
+        // loading portfolio data
+        (function(){
+            if (Data.portfolio.display.recentWork) {
+        
+                /** swaps color and backgroundcolor properties of selected node */
+                function swapColor(ts) {[ts.color, ts.backgroundColor] = [ts.backgroundColor, ts.color];}
+        
+                function filterSelection(class_filter) {
+                    let x = document.getElementsByClassName(DOMStrings.projectCL);
+                    for (let i = 0; i < x.length; i++) {
+                        let x_cl = x[i].classList;
+                        if(filterArr[0]) {
+                            if(x_cl.contains(class_filter)) {x_cl.remove(DOMStrings.hideHardCL);}
+                            else {x_cl.add(DOMStrings.hideHardCL);}
+                        }
+                        else {x_cl.remove(DOMStrings.hideHardCL);}
+                        // if (x[i].className.indexOf(class_filter) > -1) 
+                    }
+                }
+        
+                // variables required for replacing regex for tag buttons
+                let tagfilters, tStyle = {}, filterArr = [];
+                tagfilters = document.getElementById(DOMStrings.TagFiltersID);
+        
+                // adding tag buttons
+                Data.portfolio.tags.forEach(function (el) {
+                    // tag button string
+                    let tagbtn = `
+                    <label for="${el.name}" class="button is-rounded ${DOMStrings.filterInputCL}">
+                        <input id="${el.name}" class="${DOMStrings.hideVisualCL}" type="checkbox" value="${el.name.toLowerCase()}">
+                        <span>${el.name}</span><span class="icon">${el.icon}</span>
+                    </label>`;
+                    // insert the modified markup string in DOM
+                    tagfilters.insertAdjacentHTML('beforeend', tagbtn);
+                });
+        
+                // adding event listener on tag button container for all tag buttons (delegation)
+                tagfilters.addEventListener('click', function(event){
+                    if (event.target.classList.contains(DOMStrings.hideVisualCL)) {
+                        event.stopPropagation();
+                        let tNode, tNodeInput, data, chk;
+                        tNodeInput = event.target;
+                        tNode = tNodeInput.parentNode;
+                        data = tNodeInput.value;
+                        chk = DOMStrings.checkCL;
+                        // swap label colors
+                        swapColor(tNode.style);
+        
+                        if(tNode.classList.contains(chk)) {
+                            tNode.classList.remove(chk);
+                            let arr_i = filterArr.indexOf(data);
+                            if(arr_i > -1) filterArr.splice(arr_i, 1);
+                            data = "";
+                        }
+                        else {
+                            tNode.classList.add(chk);
+                            filterArr.push(data);
+                        }
+                        console.log(filterArr);
+                        filterSelection(data);
+        
+                    }
+                });
+        
+        
+                // other variables needed for replacing regex in the markup string
+                let tagstr, tagclass, tag, toPaste;
+        
+                // adding cards and modals
+                Data.portfolio.recentWork.forEach(function (el, i) {
+                    // creating a list of tags
+                    tagstr = "", tagclass="";
+                    el.projectTags.forEach(function(t) {
+                        t = t.toLowerCase();
+                        tag = `<span class="tag is-dark">${t}</span> `;
+                        tagstr += tag;
+                        tagclass += (t + " ");
+                    });
+        
+                    // license info
+                    if(el.license.text !== "") {toPaste = el.license.text;}
+                    else if (el.license.svg !== "") {toPaste = `<img src="${el.license.svg}">`;}
+                    else {toPaste = "Not Licensed.";}
+        
+                    // a string generating the entire html markup for card and modal element
+                    let cardModalStr = `
+                    <div class="column is-4 ${DOMStrings.projectCL} ${tagclass}">
+                        <div class="card modal-button" data-target="modal-id-${(i+1)}">
+                            <div class="card-image">
+                                <figure class="image is-3by2">
+                                    <img src="${el.projectImage}" alt="${("Image for " + el.projectName)}">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content has-text-centered">
+                                    <p class="title is-5">${el.projectName}</p>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div id="modal-id-${(i+1)}" class="modal modal-fx-3dSlit">
+                            <div class="modal-background is-primary"></div>
+                            <div class="modal-content">
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">${el.projectName}</p>
+                                        <button class="delete" aria-label="close"></button>
+                                    </header>
+        
+                                    <section class="modal-card-body">
+                                        <figure class="image is-3by2">
+                                            <img class="project-img" src="${el.projectImage}" alt="${("Image for " + el.projectName)}">
+                                            <div class="project-license">${toPaste}</div>
+                                        </figure><br>
+                                        <p class="project-heading">${el.heading}</p>
+                                        <p class="project-desc">${el.projectDesc}</p>
+                                        <div class="tags is-rounded">${tagstr}</div>
+                                    </section>
+        
+                                    <footer class="modal-card-foot is-flex is-flex-centered">
+                                        <a target="_blank" href="${el.sourceCode}" class="button is-rounded is-outlined">
+                                            <span>View Project</span><span class="icon">${el.sourceIcon}</span>
+                                        </a>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+        
+                    // insert the modified markup string in DOM
+                    document.getElementById(DOMStrings.portfolioListID).insertAdjacentHTML('beforeend', cardModalStr);
+                });
+        
+        
+                window.addEventListener('load', function(event){
+                    // filterSelection("all");
+                    let filterList = document.getElementsByClassName(DOMStrings.filterInputCL);
+                    let toColor = filterList;
+                    tStyle.origin = getComputedStyle(toColor[0]);
+                    tStyle.fontCol = Settings.todayTheme;
+                    tStyle.bgCol = tStyle.origin.backgroundColor;
+                    
+                    // set color for tag filter buttons
+                    for (let i = 0; i < toColor.length; i++)
+                    {
+                        toColor[i].style.color = tStyle.fontCol;
+                        toColor[i].style.backgroundColor = tStyle.bgCol;
+                    }
+                });
+            }
+        })();
+
+        // loading contact page data
+        let stNode = document.getElementById(DOMStrings.myStatementID);
+        stNode.innerText = Data.contact.statement;
+        if(Data.contact.showContactInfo) {
+            let phoneStr, emailStr, addrsStr;
+            phoneStr = `<div class="column is-4"><p><span class="fields">Phone: </span><span id="personPhone">${Data.contact.phone}</span></p></div>`;
+            emailStr = `<div class="column is-4"><p><span class="fields">Email: </span><span id="personEmail">${Data.contact.email}</span></p></div>`;
+            addrsStr = `<div class="column is-full"><p><span class="fields">Address: </span><span id="personAddress">${Data.contact.address}</span></p></div>`;
+            // insert the strings into the container
+            stNode.parentNode.insertAdjacentHTML('afterend', (phoneStr + emailStr + addrsStr));
+        }
+        // destroy the contact info (trying to)
+        Data.contact.phone = Data.contact.email = Data.contact.address = "";
+    });
+})();
+
+// responsive code for modals
+document.addEventListener('DOMContentLoaded', (ev) => {    
+    // Modals
+    let rootEl = document.documentElement;
+    let allModals = getAll('.modal');
+    let modalButtons = getAll('.modal-button');
+    let modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
+
+    if (allModals.length > 0) {
+        modalButtons.forEach(function (el) {
+            el.addEventListener('click', function () {
+                let target = document.getElementById(el.dataset.target);
+                rootEl.classList.add('is-clipped');
+                target.classList.add('is-active');
+            });
+        });	  
+        modalCloses.forEach((el) => el.addEventListener('click', () => closeModals()));
+        document.addEventListener('keydown', (e) => {if (e.code === "Escape") closeModals();});
+    }
+
+    // Functions for Modal
+    /**Closes the modal */
+    function closeModals () {
+        rootEl.classList.remove('is-clipped');
+        allModals.forEach((el) => el.classList.remove('is-active'));
+    }
+    /**Gets all queried nodes and returns an array of them */
+    function getAll (selector) {return Array.prototype.slice.call(document.querySelectorAll(selector), 0);}
+});

@@ -30,6 +30,10 @@
                 "https://cdn.jsdelivr.net/npm/bulma@0.7.4/css/bulma.min.css",
                 "./css/lib/bulma.min.css"
             ],
+            ModalFX : [
+                "https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css",
+                "./css/lib/modal-fx.min.css"
+            ],
             customCSS : ["./css/gcvmain.css"]
         },
         lastLoad : {
@@ -40,6 +44,12 @@
                 ],
                 integrity : "sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP",
                 crossorigin :"anonymous"
+            },
+            DevIcon : {
+                urls: [
+                    "https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css",
+                    "./css/lib/devicon.min.css"
+                ]
             }
         }
     };

@@ -234,9 +234,11 @@ Structure of `data.js` is as below -
       * `icon` : _(Optional)_ Icon for the tag. Should be either SVG or Webfont. I have used Font Awesome 5 for this project so check out their docs [here][FAdocs].
 
 4. `contact` : This section contains your contact information. The fields are so follows -  
+   * `statement` : A few words on how to contact you. Necessary if you choose to keep your contact info private.  
+   * `showContactInfo` : a boolean value indicating whether you want to show contact info or not. **BEWARE!** If you choose to set it to false, it is best to not fill up the fields below either (except `catchMeOn`).  
    * `phone` : Contains your phone number. You can add it in any order you want but I prefer the following -  `"phone" : "+<CountryCode> 9876-543210"` where `CountryCode` will be replaced by your contry's code. For India, it is `91`. Hence, the field for an Indian Person will be - `phone : "+91 9876-543210"`.  
    * `email` : Contains your email id. For example - `email : "your.name@mail.com"`.  
-   * `addressOffice` : Contains your complete Office/ Work address. How you write it is upto you.  
+   * `address` : Contains your complete Office/ Work address. How you write it is upto you.  
 
 ### Configuring `settings.js`:
 Structure of `settings.js` is as below -  
