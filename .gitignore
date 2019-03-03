@@ -1,4 +1,4 @@
-# Ignore the contents of future directory
+# Ignore the contents of these directories
 future/
 sass/
 
