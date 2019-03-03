@@ -1,5 +1,6 @@
 # Ignore the contents of future directory
 future/
+sass/
 
 # ignore these files
 package-lock.json
