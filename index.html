@@ -258,6 +258,52 @@
                         <div class="column is-full"><p id="contactStatement"></p></div>
                         <!-- if asked, contact info columns will appear here -->
                     </div>
+
+                    <div id="message-form">
+                        <!-- Message form is here -->
+                        <form method="post" action="https://formspree.io/bsandeepan95.work@gmail.com">
+                            <fieldset>
+                                <legend class="subtitle is-4"><em>Leave a Message</em></legend>
+                                <!-- Name -->
+                                <div class="field">
+                                    <label class="label">Name</label>
+                                    <div class="control has-icons-left">
+                                        <input class="input" name="name" type="text" placeholder="Your Name" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- Email ID -->
+                                <div class="field">
+                                    <label class="label">Email</label>
+                                    <div class="control has-icons-left">
+                                        <input class="input" type="email" name="email" placeholder="your.name@mail.com" pattern=".+@.+" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                    </div>
+                                    <p class="help">An email id contains an '@' symbol and looks like <em>abcd@mail.com</em></p>
+                                </div>
+                                <!-- Message -->
+                                <div class="field">
+                                    <label class="label">Message</label>
+                                    <div class="control">
+                                        <textarea class="textarea" name="message" placeholder="Write your message here" required></textarea>
+                                    </div>
+                                    <p id="msg-rule" class="help">
+                                        Keep your message concise and to-the-point. For any files, upload them in cloud and share the link along with a reason for me to open them. Thank you!
+                                    </p>
+                                </div>
+                                <!-- Submit -->
+                                <div class="field is-grouped">
+                                    <div class="control">
+                                        <button class="button is-primary is-large is-rounded">Send Message</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
                 </section>
             </section>
             

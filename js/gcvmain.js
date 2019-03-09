@@ -201,14 +201,33 @@
         
                 function filterSelection(class_filter) {
                     let x = document.getElementsByClassName(DOMStrings.projectCL);
+
+                    // TODO: eval the following code to see why it is not working as expected
+                    // // remove hideHard from all projects
+                    // for (let i = 0; i < x.length; i++) {x[i].remove(DOMStrings.hideHardCL);}
+                    // // if filterArr[0] exists, run another for loop to add hideHard
+                    // if(filterArr[0]) {
+                    //     for (let i = 0; i < x.length; i++) {
+                    //         let x_cl = x[i].classList;
+                    //         let x_cn = x[i].className;
+                    //         if (!filterArr.every(el => x_cn.includes(el))) {
+                    //             x_cl.add(DOMStrings.hideHardCL);
+                    //         }
+                    //     }
+                    // }
+                    
                     for (let i = 0; i < x.length; i++) {
                         let x_cl = x[i].classList;
+                        let x_cn = x[i].className;
+                        // if any filter is selected then
                         if(filterArr[0]) {
-                            if(x_cl.contains(class_filter)) {x_cl.remove(DOMStrings.hideHardCL);}
+                            // if all filters match, then show
+                            let all_matched = filterArr.every(el => x_cn.includes(el));
+                            if (all_matched) {x_cl.remove(DOMStrings.hideHardCL);}
                             else {x_cl.add(DOMStrings.hideHardCL);}
                         }
+                        // else show all
                         else {x_cl.remove(DOMStrings.hideHardCL);}
-                        // if (x[i].className.indexOf(class_filter) > -1) 
                     }
                 }
         
