@@ -35,6 +35,14 @@
   right: 0;
   left: auto;
 }
+@media (max-width: 768px) {
+  .frame-top, .frame-bottom {
+    height: 5px;
+  }
+  .frame-left, .frame-right {
+    width: 5px;
+  }
+}
 
 /* preloader style */
 #preloader {

@@ -323,7 +323,12 @@
                     icon : "",
                     link: ""
                 }
-            ]
+            ],
+            useContactForm: true,
+            contactForm: {
+                action: "https://formspree.io/bsandeepan95.work@gmail.com",
+                guideline: "Keep your message concise and to-the-point. For any files, upload them in cloud and share the link along with a reason for me to open them. Thank you!"
+            }
         }
     };
 

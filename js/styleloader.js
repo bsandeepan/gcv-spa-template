@@ -4,7 +4,7 @@
  *      - setting today's theme.
  *      - loading stylesheets and scripts using FallbackJS.
  * 2.   Function Declarations: It contains -
- *      
+ *      - General Functions
  *      - Timeline functions
  * 3.   DOMContentLoaded Code: For things to do after basic HTML 
  *      structure is loaded. It contains -
@@ -47,13 +47,10 @@
 
     /** ************************ Function Declarations ************************ */
 
-    /** Toggle class for selected node. Uses querySelector() method */
+    /** Toggle hideHard class for selected node. Uses querySelector() method */
     function toggleHide(selector) {
         document.querySelector(selector).classList.toggle(loadStrings.hideHardCL);
     }
-
-    
-    function toggleActive(selector) {}
 
     /**Finds Selector and makes a style element for it containing
      * pseudo element modifications.

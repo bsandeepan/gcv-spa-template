@@ -16,7 +16,6 @@
 /* 01. Common Element Style */
 body {
   font-family: 'Roboto Mono', monospace;
-  /* font-family: 'VT323', monospace; */
 }
 ol, ul {
   color: #333;
@@ -35,7 +34,10 @@ ul li::before {
 
 /* 02. Common Class Style */
 .sections {
-  padding: 10% 5%;
+  padding: 5%;
+}
+.is-margin-centered {
+  margin: 0 auto;
 }
 .is-flex-full-centered {
   justify-content: center;
@@ -57,7 +59,7 @@ ul li::before {
   flex-direction: column-reverse;
 }
 .is-padded {
-  padding: 5%;
+  padding: 1.5rem;
 }
 .is-hard-padded {
   padding: 40px 0%;
@@ -84,8 +86,6 @@ ul li::before {
   border: 5px solid black;
   transition: border 1.5s;
 }
-
-/* grain of salt */
 
 /* 03. Media Queries */
 /* Responsive design for tab and onwards */
@@ -117,7 +117,7 @@ ul li::before {
 }
 #credits
 {
-  padding: 15px 0px;
+  padding: 15px;
   font-size: 0.8rem;
 }
 
@@ -284,7 +284,7 @@ ul li::before {
   background-color: #fff;
   border-radius: 100%;
   top: 15%;
-  right: -8px;
+  right: -7px;
   z-index: 90;
 }
 .tl-entry .tl-title h3 {
@@ -319,7 +319,7 @@ ul li::before {
   background-color: #fff;
   border-radius: 100%;
   top: 15%;
-  right: -8px;
+  right: -7px;
   z-index: 90;
 }
 

@@ -1,8 +1,6 @@
-/** */
+/**Loads website data and applies related styles. It contains $$  */
 ( function() {
     // An One-stop obj solution to maintain all DOM IDs and classnames(CL)
-    // var Settings = window.Settings;
-    // var Data = window.Data;
     let DOMStrings = {
         // general tags
         hideHardCL : "hideHard",
@@ -27,6 +25,7 @@
         skillSetID : "skillset",
         // portfolio page tags
         publicationID : "publications",
+        recentWorksID: "recentWorks",
         TagFiltersID : "tagbuttons",
         portfolioListID : "portfoliolist",
         projectCL : "project",
@@ -35,8 +34,25 @@
         myStatementID : "contactStatement",
         personPhoneID : "personPhone",
         personEmailID : "personEmail",
-        personAddressID : "personAddress"
+        personAddressID : "personAddress",
+        "contactFormID" : "contactForm",
+        "msgGuidelineID" : "msg-rule"
     }
+
+    // dynamic styling info object
+    let dynamicStyle = {
+        fontCol : Settings.todayTheme,
+        bgCol: "rgb(255, 255, 255)"
+    }; 
+
+    /** Toggle hideHard class for selected node. Uses querySelector() method */
+    function toggleHide (selector) {document.querySelector(selector).classList.toggle(DOMStrings.hideHardCL);}
+
+    /**Gets all queried nodes and returns an array of them */
+    function getAll (selector) {return Array.prototype.slice.call(document.querySelectorAll(selector), 0);}
+
+    /** swaps color and backgroundcolor properties of selected node */
+    function swapColor (elSt) {[elSt.color, elSt.backgroundColor] = [elSt.backgroundColor, elSt.color];}
 
     /**Calculates age in years (x years) */
     function calculate_age(dobYear, dobMonth, dobDate)
@@ -63,8 +79,44 @@
         });
         return `<ul>${listItem}</ul>`;
     }
-   
 
+    /**Takes an array of filter data as arguments. Then selects an array of specified
+     * selector (targeted List), and based on filter data, shows all elements of the
+     * Targeted List that has the data filters present in their className.
+     */
+    function filterSelection(filter_arr, selector) {
+        let x = getAll(selector);
+
+        // TODO: eval the following code to see why it is not working as expected
+        // // remove hideHard from all projects
+        // for (let i = 0; i < x.length; i++) {x[i].remove(DOMStrings.hideHardCL);}
+        // // if filter_arr[0] exists, run another for loop to add hideHard
+        // if(filter_arr[0]) {
+        //     for (let i = 0; i < x.length; i++) {
+        //         let x_cl = x[i].classList;
+        //         let x_cn = x[i].className;
+        //         if (!filter_arr.every(el => x_cn.includes(el))) {
+        //             x_cl.add(DOMStrings.hideHardCL);
+        //         }
+        //     }
+        // }
+        
+        for (let i = 0; i < x.length; i++) {
+            let x_cl = x[i].classList;
+            let x_cn = x[i].className;
+            // if any filter is selected then
+            if(filter_arr[0]) {
+                // if all filters match, then show
+                let all_matched = filter_arr.every(el => x_cn.includes(el));
+                if (all_matched) {x_cl.remove(DOMStrings.hideHardCL);}
+                else {x_cl.add(DOMStrings.hideHardCL);}
+            }
+            // else show all
+            else {x_cl.remove(DOMStrings.hideHardCL);}
+        }
+    }
+   
+    // loading data starts here
     document.addEventListener('DOMContentLoaded', (ev) => {
         // Loading landing page data
         document.getElementById(DOMStrings.brandNameID).innerText = Data.landing.brandName;
@@ -191,48 +243,14 @@
             });
             document.getElementById(DOMStrings.publicationID).insertAdjacentHTML('beforeend', pubStr);
         }
+        else {toggleHide(`#${DOMStrings.publicationID}`);}
 
-        // loading portfolio data
+        // loading recent works data
         (function(){
             if (Data.portfolio.display.recentWork) {
         
-                /** swaps color and backgroundcolor properties of selected node */
-                function swapColor(ts) {[ts.color, ts.backgroundColor] = [ts.backgroundColor, ts.color];}
-        
-                function filterSelection(class_filter) {
-                    let x = document.getElementsByClassName(DOMStrings.projectCL);
-
-                    // TODO: eval the following code to see why it is not working as expected
-                    // // remove hideHard from all projects
-                    // for (let i = 0; i < x.length; i++) {x[i].remove(DOMStrings.hideHardCL);}
-                    // // if filterArr[0] exists, run another for loop to add hideHard
-                    // if(filterArr[0]) {
-                    //     for (let i = 0; i < x.length; i++) {
-                    //         let x_cl = x[i].classList;
-                    //         let x_cn = x[i].className;
-                    //         if (!filterArr.every(el => x_cn.includes(el))) {
-                    //             x_cl.add(DOMStrings.hideHardCL);
-                    //         }
-                    //     }
-                    // }
-                    
-                    for (let i = 0; i < x.length; i++) {
-                        let x_cl = x[i].classList;
-                        let x_cn = x[i].className;
-                        // if any filter is selected then
-                        if(filterArr[0]) {
-                            // if all filters match, then show
-                            let all_matched = filterArr.every(el => x_cn.includes(el));
-                            if (all_matched) {x_cl.remove(DOMStrings.hideHardCL);}
-                            else {x_cl.add(DOMStrings.hideHardCL);}
-                        }
-                        // else show all
-                        else {x_cl.remove(DOMStrings.hideHardCL);}
-                    }
-                }
-        
                 // variables required for replacing regex for tag buttons
-                let tagfilters, tStyle = {}, filterArr = [];
+                let tagfilters, filterArr = [];
                 tagfilters = document.getElementById(DOMStrings.TagFiltersID);
         
                 // adding tag buttons
@@ -258,24 +276,23 @@
                         chk = DOMStrings.checkCL;
                         // swap label colors
                         swapColor(tNode.style);
-        
+
                         if(tNode.classList.contains(chk)) {
+                            // if checked, remove checked, delete data-filtter from filter array
                             tNode.classList.remove(chk);
                             let arr_i = filterArr.indexOf(data);
                             if(arr_i > -1) filterArr.splice(arr_i, 1);
-                            data = "";
                         }
                         else {
+                            // else add checked and add data-filter to filter array
                             tNode.classList.add(chk);
                             filterArr.push(data);
                         }
-                        console.log(filterArr);
-                        filterSelection(data);
-        
+                        // call filter selector function for project list
+                        filterSelection(filterArr, `.${DOMStrings.projectCL}`);
                     }
                 });
-        
-        
+
                 // other variables needed for replacing regex in the markup string
                 let tagstr, tagclass, tag, toPaste;
         
@@ -343,29 +360,25 @@
                     // insert the modified markup string in DOM
                     document.getElementById(DOMStrings.portfolioListID).insertAdjacentHTML('beforeend', cardModalStr);
                 });
-        
-        
+
+                // color the tags
                 window.addEventListener('load', function(event){
-                    // filterSelection("all");
-                    let filterList = document.getElementsByClassName(DOMStrings.filterInputCL);
-                    let toColor = filterList;
-                    tStyle.origin = getComputedStyle(toColor[0]);
-                    tStyle.fontCol = Settings.todayTheme;
-                    tStyle.bgCol = tStyle.origin.backgroundColor;
-                    
+                    let filterList = getAll(`.${DOMStrings.filterInputCL}`);
                     // set color for tag filter buttons
-                    for (let i = 0; i < toColor.length; i++)
+                    for (let i = 0; i < filterList.length; i++)
                     {
-                        toColor[i].style.color = tStyle.fontCol;
-                        toColor[i].style.backgroundColor = tStyle.bgCol;
+                        filterList[i].style.color = dynamicStyle.fontCol;
+                        filterList[i].style.backgroundColor = dynamicStyle.bgCol;
                     }
                 });
             }
+            else {toggleHide(`#${DOMStrings.recentWorksID}`);}
         })();
 
         // loading contact page data
         let stNode = document.getElementById(DOMStrings.myStatementID);
         stNode.innerText = Data.contact.statement;
+        // If Data.contact.showContactInfo is true, then the fields will appear
         if(Data.contact.showContactInfo) {
             let phoneStr, emailStr, addrsStr;
             phoneStr = `<div class="column is-4"><p><span class="fields">Phone: </span><span id="personPhone">${Data.contact.phone}</span></p></div>`;
@@ -376,35 +389,36 @@
         }
         // destroy the contact info (trying to)
         Data.contact.phone = Data.contact.email = Data.contact.address = "";
+        // If Data.contact.useContactForm is true, then contact form will work, else hide
+        if(Data.contact.useContactForm) {
+            document.getElementById(DOMStrings.contactFormID).action = Data.contact.contactForm.action;
+            document.getElementById(DOMStrings.msgGuidelineID).innerText = Data.contact.contactForm.guideline;
+        }
+        else{toggleHide(`#${DOMStrings.contactFormID}`);}
+    });
+
+    // responsive code for modals
+    document.addEventListener('DOMContentLoaded', (ev) => {
+        let rootEl = document.documentElement;
+        let allModals = getAll('.modal');
+        let modalButtons = getAll('.modal-button');
+        let modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
+
+        if (allModals.length > 0) {
+            modalButtons.forEach(function (el) {
+                el.addEventListener('click', function () {
+                    let target = document.getElementById(el.dataset.target);
+                    rootEl.classList.add('is-clipped');
+                    target.classList.add('is-active');
+                });
+            });	  
+            modalCloses.forEach((el) => el.addEventListener('click', () => closeModals()));
+            document.addEventListener('keydown', (e) => {if (e.code === "Escape") closeModals();});
+        }
+        /**Closes the modal */
+        function closeModals () {
+            rootEl.classList.remove('is-clipped');
+            allModals.forEach((el) => el.classList.remove('is-active'));
+        }
     });
 })();
-
-// responsive code for modals
-document.addEventListener('DOMContentLoaded', (ev) => {    
-    // Modals
-    let rootEl = document.documentElement;
-    let allModals = getAll('.modal');
-    let modalButtons = getAll('.modal-button');
-    let modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
-
-    if (allModals.length > 0) {
-        modalButtons.forEach(function (el) {
-            el.addEventListener('click', function () {
-                let target = document.getElementById(el.dataset.target);
-                rootEl.classList.add('is-clipped');
-                target.classList.add('is-active');
-            });
-        });	  
-        modalCloses.forEach((el) => el.addEventListener('click', () => closeModals()));
-        document.addEventListener('keydown', (e) => {if (e.code === "Escape") closeModals();});
-    }
-
-    // Functions for Modal
-    /**Closes the modal */
-    function closeModals () {
-        rootEl.classList.remove('is-clipped');
-        allModals.forEach((el) => el.classList.remove('is-active'));
-    }
-    /**Gets all queried nodes and returns an array of them */
-    function getAll (selector) {return Array.prototype.slice.call(document.querySelectorAll(selector), 0);}
-});
