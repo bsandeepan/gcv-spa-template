@@ -1,8 +1,36 @@
-/**Loads website data and applies related styles. It contains $$  */
+/**Loads website data and applies related styles. It contains $$ sections of code -
+ * 1.   Variable Declarations: it contains -
+ *      - DOMStrings: An One-stop obj solution to maintain all DOM IDs and classnames(CL)
+ *      - dynamicStyle: dynamic styling info object
+ *      - pseudoUID : Keeps tract of current pseudo UID and increments it per use
+ * 
+ * 2.   Function Declarations: It contains -
+ *      - General functions
+ *      - Age calculation function
+ *      - List (unordered) generation function
+ *      - Filtering function
+ *      - Timeline functions
+ * 
+ * 3.   Data Loading Section: This section loads all displayable data from 'data.js' file
+ *      and attaches necessary event listeners.
+ * 
+ * 4.   AfterLoaded Code: For things to do after entire website 
+ *      content is loaded. It contains -
+ *      - toggle display state for preloader and main body
+ *      - apply pseudo element edits on timeline
+ *      - if (Data.portfolio.display.recentWork) then color the tags
+ *      - responsive code for modals
+ * 
+ */
+
 ( function() {
-    // An One-stop obj solution to maintain all DOM IDs and classnames(CL)
+    /** ************************ Variable Declarations ************************ */
+
+    /**An One-stop obj solution to maintain all DOM IDs and classnames(CL) */
     let DOMStrings = {
         // general tags
+        preloaderID: "#preloader",
+        mainBodyID : "#gcvSPA",
         hideHardCL : "hideHard",
         hideVisualCL : "hideVisual",
         checkCL : "checked",
@@ -29,6 +57,7 @@
         TagFiltersID : "tagbuttons",
         portfolioListID : "portfoliolist",
         projectCL : "project",
+        projectImgCL : "proj-img",
         filterInputCL : "inputfilter",
         // contact page tags
         myStatementID : "contactStatement",
@@ -45,10 +74,21 @@
         bgCol: "rgb(255, 255, 255)"
     }; 
 
+    /**Keeps tract of current pseudo UID and increments it per use */
+    let pseudoUID = {
+        _current: 0,
+        getNew: function(){
+            this._current++;
+            return this._current;
+        }
+    };
+
+    /** ************************ Function Declarations ************************ */
+
     /** Toggle hideHard class for selected node. Uses querySelector() method */
     function toggleHide (selector) {document.querySelector(selector).classList.toggle(DOMStrings.hideHardCL);}
 
-    /**Gets all queried nodes and returns an array of them */
+    /**Gets all queried nodes and returns an array of them. Uses querySelector() method */
     function getAll (selector) {return Array.prototype.slice.call(document.querySelectorAll(selector), 0);}
 
     /** swaps color and backgroundcolor properties of selected node */
@@ -115,8 +155,37 @@
             else {x_cl.remove(DOMStrings.hideHardCL);}
         }
     }
-   
-    // loading data starts here
+
+    /**Finds Selector and makes a style element for it containing
+     * pseudo element modifications.
+     */
+    HTMLElement.prototype.pseudoStyle = function(selector,element,prop,value){
+        var _this = this;
+        var _sheetId = "pseudoStyles";
+        // var _head = document.head || document.getElementsByTagName('head')[0];
+        var _selected = document.querySelector(selector);
+        var _sheet = document.getElementById(_sheetId) || document.createElement('style');
+        _sheet.id = _sheetId;
+        var className = "pseudoStyle" + pseudoUID.getNew();
+        
+        _this.className +=  " "+className; 
+        
+        _sheet.innerHTML += "."+className+":"+element+"{"+prop+":"+value+"}";
+            _selected.appendChild(_sheet);
+        return this;
+    };
+
+    /**Selects Nodelist for selector and applies pseudo element modifications
+     * NOTE: For pseudo element, you need to enter them prepended with an "colon (:)".
+     * Example - provide "::before" as ":before" in element field
+     * For psuedo class, providing "hover" will create ":hover" by itself
+     */
+    function applyPsuedoEl(selector,element,prop,value) {
+        var el = document.querySelectorAll(selector);
+        for(var i = 0; i < el.length; i++) el[i].pseudoStyle(selector,element,prop,value);
+    }
+
+    /** ************************ Data Loading Section ************************ */
     document.addEventListener('DOMContentLoaded', (ev) => {
         // Loading landing page data
         document.getElementById(DOMStrings.brandNameID).innerText = Data.landing.brandName;
@@ -135,7 +204,7 @@
                                                                                 Data.profile.dateOfBirth.date
         );
 
-        // loading experience and education data
+        // loading experience, education, hobbies, skilset, language data
         (function() {
             // looping in reverse through the experience array (to avoid unnecessary reduce() to do forEach() :P)
             for(let i = (Data.profile.experience.length - 1); i >= 0; i--) {
@@ -360,17 +429,6 @@
                     // insert the modified markup string in DOM
                     document.getElementById(DOMStrings.portfolioListID).insertAdjacentHTML('beforeend', cardModalStr);
                 });
-
-                // color the tags
-                window.addEventListener('load', function(event){
-                    let filterList = getAll(`.${DOMStrings.filterInputCL}`);
-                    // set color for tag filter buttons
-                    for (let i = 0; i < filterList.length; i++)
-                    {
-                        filterList[i].style.color = dynamicStyle.fontCol;
-                        filterList[i].style.backgroundColor = dynamicStyle.bgCol;
-                    }
-                });
             }
             else {toggleHide(`#${DOMStrings.recentWorksID}`);}
         })();
@@ -397,28 +455,69 @@
         else{toggleHide(`#${DOMStrings.contactFormID}`);}
     });
 
-    // responsive code for modals
-    document.addEventListener('DOMContentLoaded', (ev) => {
-        let rootEl = document.documentElement;
-        let allModals = getAll('.modal');
-        let modalButtons = getAll('.modal-button');
-        let modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
+    /** ************************ AfterLoaded Code ************************ */
+    // When ENTIRE window and document loading is done, do these
+    window.addEventListener('load', function(event){
+        // toggle display state for preloader and main body
+        toggleHide(DOMStrings.preloaderID);
+        toggleHide(DOMStrings.mainBodyID);
 
-        if (allModals.length > 0) {
-            modalButtons.forEach(function (el) {
-                el.addEventListener('click', function () {
-                    let target = document.getElementById(el.dataset.target);
-                    rootEl.classList.add('is-clipped');
-                    target.classList.add('is-active');
-                });
-            });	  
-            modalCloses.forEach((el) => el.addEventListener('click', () => closeModals()));
-            document.addEventListener('keydown', (e) => {if (e.code === "Escape") closeModals();});
-        }
-        /**Closes the modal */
-        function closeModals () {
-            rootEl.classList.remove('is-clipped');
-            allModals.forEach((el) => el.classList.remove('is-active'));
-        }
+        // styling code for page elements
+        (function(){
+            // an onj keeping all id and class info for styling
+
+            // set colors for special buttons
+            let myBtns = getAll(".is-btn-special");
+            myBtns.forEach(el => {el.style.backgroundColor = dynamicStyle.fontCol;});
+
+            // apply color to all special fields
+            let allFields = getAll(".fields");
+            allFields.forEach(el => {el.style.color = dynamicStyle.fontCol;});
+
+            // apply pseudo element edits on timeline
+            applyPsuedoEl(".timeline", ":before", "background", Settings.todayTheme);
+            applyPsuedoEl(".tl-title", ":before", "border", ("4px solid " + Settings.todayTheme + " !important"));
+            applyPsuedoEl(".tl-end", ":before", "border", ("4px solid " + Settings.todayTheme + " !important"));
+
+
+            if (Data.portfolio.display.recentWork) {
+
+                // set color for tag filter buttons
+                let filterList = getAll(`.${DOMStrings.filterInputCL}`);
+                for (let i = 0; i < filterList.length; i++)
+                {
+                    filterList[i].style.color = dynamicStyle.fontCol;
+                    filterList[i].style.backgroundColor = dynamicStyle.bgCol;
+                }
+
+                // apply pseudo class edits on project cards
+                applyPsuedoEl(".card-image", "hover", "border-color", Settings.todayTheme);
+            }
+        })();
+
+        // responsive code for modals
+        (function(){
+            let rootEl = document.documentElement;
+            let allModals = getAll('.modal');
+            let modalButtons = getAll('.modal-button');
+            let modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
+
+            if (allModals.length > 0) {
+                modalButtons.forEach(function (el) {
+                    el.addEventListener('click', function () {
+                        let target = document.getElementById(el.dataset.target);
+                        rootEl.classList.add('is-clipped');
+                        target.classList.add('is-active');
+                    });
+                });	  
+                modalCloses.forEach((el) => el.addEventListener('click', () => closeModals()));
+                document.addEventListener('keydown', (e) => {if (e.code === "Escape") closeModals();});
+            }
+            /**Closes the modal */
+            function closeModals () {
+                rootEl.classList.remove('is-clipped');
+                allModals.forEach((el) => el.classList.remove('is-active'));
+            }
+        })();
     });
 })();

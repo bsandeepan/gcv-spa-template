@@ -1,5 +1,5 @@
 /**This script deals with things that should be operational before main content is 
- * loaded. Contains three sections of code -
+ * loaded. Contains TWO sections of code -
  * 
  * 1.   Loader Animation Code: This is where loader animation code should go. If 
  *      you have no such code for your preferred animation, then leave it blank. 
@@ -15,11 +15,11 @@
  */
 
  ( function(){
-    //  1. Loader Animation Code (Begin)
+    /** ************************ Begin: Loader Animation Code ************************ */
     //  Code for loader animation goes here
-    //  1. Loader Animation Code (End)
-    
-    //  2. Preloader Code (Begin)
+    /** ************************ End: Loader Animation Code ************************ */
+
+    /** ************************ Begin: Preloader Code ************************ */
     /** Checks if DOM nodes are loaded. Uses querySelector() method */
     function onReady(selector, timeout, callback) {
         var intervalId = window.setInterval(function() {
@@ -63,5 +63,5 @@
             }
         }
     });
-    //  2. Preloader Code (End)
+    /** ************************ End: Preloader Code ************************ */
  })();

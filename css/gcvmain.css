@@ -64,6 +64,13 @@ ul li::before {
 .is-hard-padded {
   padding: 40px 0%;
 }
+.is-btn-special{
+  color: white;
+  background-color: dodgerblue;
+}
+.is-btn-special:hover {
+  color: white;
+}
 .modal-card {
   max-width: 700px;
   max-height: 500px;
@@ -74,7 +81,6 @@ ul li::before {
 .card {
   border-radius: 15px;
 }
-
 .card-image {
   border: 5px solid white;
 }
@@ -134,11 +140,13 @@ ul li::before {
 }
 
 /* 07. Profile Page Style */
+#btn-cv:hover {
+  font-weight: 700;
+}
 #experience > h4 {
   margin: 0;
   padding: 0 20%;
 }
-
 #education > h4 {
   margin: 0;
   padding: 0 20%;
@@ -146,7 +154,7 @@ ul li::before {
 
 /* 08. Portfolio Page Style */
 .pubtitle {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-style: oblique;
 }
 .project-license {
@@ -170,6 +178,7 @@ ul li::before {
   font-weight: 700;
   font-style: oblique;
 }
+
 /* 09. Contact Page Style */
 
 /* 10. Scroll Animation */
