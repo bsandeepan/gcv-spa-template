@@ -1,8 +1,8 @@
-# Project: Glitch CV Website Template
+# Project: GCV SPA Template
 
-# ATTENTION: PROJECT IS INCOMPLETE AND NOT FOR PUBLIC USE YET. ALL RIGHTS ARE RESERVED FOR THE TIME BEING! THANK YOU FOR YOUR PATIENCE!
+**_Details_ :** A CV/Portfolio SPA website template for all to use. Beware! There will be a Glitch in your CV! :)  
 
-**_Details_ :** A CV/Portfolio SPA web template for all to use. Beware! There will be a Glitch in your CV!  
+**_License Info_ :** This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, See the local **LICENSE** file or visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.  
 
 ----
 
