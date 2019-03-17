@@ -548,10 +548,10 @@ ul li::before {
     z-index: -1;
 }
 .glitch-hover-effect:hover:before {
-    animation: glitch 0.3s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
 }
 .glitch-hover-effect:hover:after {
-    animation: glitch 0.3s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse;
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 5;
 }
 @keyframes glitch {
     0% {
