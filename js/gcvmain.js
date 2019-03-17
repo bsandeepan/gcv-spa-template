@@ -1,7 +1,7 @@
 /**Loads website data and applies related styles. It contains $$ sections of code -
  * 1.   Variable Declarations: it contains -
- *      - DOMStrings: An One-stop obj solution to maintain all DOM IDs and classnames(CL)
- *      - dynamicStyle: dynamic styling info object
+ *      - DOMStrings: An one-stop obj solution to maintain all DOM IDs and classnames(CL)
+ *      - StyleStrings: An obj keeping all id and class info for dynamic styling
  *      - pseudoUID : Keeps tract of current pseudo UID and increments it per use
  * 
  * 2.   Function Declarations: It contains -
@@ -26,7 +26,11 @@
 ( function() {
     /** ************************ Variable Declarations ************************ */
 
-    /**An One-stop obj solution to maintain all DOM IDs and classnames(CL) */
+    // Link to guidelines for publications (a helpful thing)
+    let pubGuideLink = `http://wiki.lib.sun.ac.za/images/5/5d/Online_Visibility_Guidelines.pdf`;
+    let glitchData = "data-glitch";
+
+    /**An one-stop obj solution to maintain all DOM IDs and classnames(CL) */
     let DOMStrings = {
         // general tags
         preloaderID: "#preloader",
@@ -34,6 +38,7 @@
         hideHardCL : "hideHard",
         hideVisualCL : "hideVisual",
         checkCL : "checked",
+        glitchStaticCL : "glitch-static-effect",
         // landing page tags
         brandNameID : "brandName",
         displayNameID : "landingTitle",
@@ -45,6 +50,7 @@
         myAgeID : "personAge",
         myJobID : "personJob",
         myResidenceID : "personResidence",
+        cvBtnID: "btn-cv",
         expTLID : "tl-exp",
         edTLID : "tl-ed",
         hobbiesID : "hobby",
@@ -57,22 +63,37 @@
         TagFiltersID : "tagbuttons",
         portfolioListID : "portfoliolist",
         projectCL : "project",
-        projectImgCL : "proj-img",
         filterInputCL : "inputfilter",
         // contact page tags
         myStatementID : "contactStatement",
         personPhoneID : "personPhone",
         personEmailID : "personEmail",
         personAddressID : "personAddress",
+        contactLinksID: "catchME",
         "contactFormID" : "contactForm",
-        "msgGuidelineID" : "msg-rule"
-    }
+        "msgGuidelineID" : "msg-rule",
+        // footer tag
+        linksFooterID: "links-footer"
+    };
 
-    // dynamic styling info object
-    let dynamicStyle = {
-        fontCol : Settings.todayTheme,
-        bgCol: "rgb(255, 255, 255)"
-    }; 
+    // an obj keeping all id and class info for dynamic styling
+    let StyleStrings = {
+        // general style options
+        bgCol: "white",
+        // classnames manipulated for styling
+        splBtnCL: "is-btn-special",
+        fieldCL: "fields",
+        tlMainCL: "timeline",
+        tlItemCL: "tl-title",
+        tlEndCL: "tl-end",
+        projectCardCL: "proj-card",
+        projectButtonCL: "proj-button",
+        contactBtnLinkCL: "contact-btn-link",
+        footerLinkCL: "footer-link",
+        // nested manipulations
+        topNavItems: "#top-nav .navbar-item",
+        formControls: "#contactForm .control input, #contactForm .control textarea"
+    };
 
     /**Keeps tract of current pseudo UID and increments it per use */
     let pseudoUID = {
@@ -88,7 +109,9 @@
     /** Toggle hideHard class for selected node. Uses querySelector() method */
     function toggleHide (selector) {document.querySelector(selector).classList.toggle(DOMStrings.hideHardCL);}
 
-    /**Gets all queried nodes and returns an array of them. Uses querySelector() method */
+    /**Gets all queried nodes and returns an array of them. Uses querySelectorAll() method. 
+     * To fetch multiple separate nodes, provide them using comma(,).
+    */
     function getAll (selector) {return Array.prototype.slice.call(document.querySelectorAll(selector), 0);}
 
     /** swaps color and backgroundcolor properties of selected node */
@@ -125,22 +148,7 @@
      * Targeted List that has the data filters present in their className.
      */
     function filterSelection(filter_arr, selector) {
-        let x = getAll(selector);
-
-        // TODO: eval the following code to see why it is not working as expected
-        // // remove hideHard from all projects
-        // for (let i = 0; i < x.length; i++) {x[i].remove(DOMStrings.hideHardCL);}
-        // // if filter_arr[0] exists, run another for loop to add hideHard
-        // if(filter_arr[0]) {
-        //     for (let i = 0; i < x.length; i++) {
-        //         let x_cl = x[i].classList;
-        //         let x_cn = x[i].className;
-        //         if (!filter_arr.every(el => x_cn.includes(el))) {
-        //             x_cl.add(DOMStrings.hideHardCL);
-        //         }
-        //     }
-        // }
-        
+        let x = getAll(selector);        
         for (let i = 0; i < x.length; i++) {
             let x_cl = x[i].classList;
             let x_cn = x[i].className;
@@ -191,7 +199,9 @@
         document.getElementById(DOMStrings.brandNameID).innerText = Data.landing.brandName;
         let greetStr = `${Data.landing.greeting} I am ${Data.landing.displayName}`;
         document.getElementById(DOMStrings.displayNameID).innerText = greetStr.toUpperCase();
+        document.getElementById(DOMStrings.displayNameID).setAttribute(glitchData, greetStr.toUpperCase());
         document.getElementById(DOMStrings.taglineWorkID).innerText = Data.landing.taglineWork;
+        document.getElementById(DOMStrings.taglineWorkID).setAttribute(glitchData, Data.landing.taglineWork);
 
         // loading profile page data
         document.getElementById(DOMStrings.myImageID).src = Data.profile.profilePicture;
@@ -203,6 +213,7 @@
                                                                                 Data.profile.dateOfBirth.month,
                                                                                 Data.profile.dateOfBirth.date
         );
+        document.getElementById(DOMStrings.cvBtnID).href = Data.profile.cvLink;
 
         // loading experience, education, hobbies, skilset, language data
         (function() {
@@ -306,7 +317,7 @@
             let pubStr = "", pub;
             // generating a publication string and making a list of them
             Data.portfolio.publication.forEach(function (el) {
-                if (el.link === "") el.link = `http://wiki.lib.sun.ac.za/images/5/5d/Online_Visibility_Guidelines.pdf`;
+                if (el.link === "") el.link = pubGuideLink;
                 pub = `<p><strong><a target="_blank" href="${el.link}" class="pubtitle fields">${el.title}</a>: </strong><span>${el.desc}</span></p>`;
                 pubStr += pub;
             });
@@ -326,7 +337,7 @@
                 Data.portfolio.tags.forEach(function (el) {
                     // tag button string
                     let tagbtn = `
-                    <label for="${el.name}" class="button is-rounded ${DOMStrings.filterInputCL}">
+                    <label for="${el.name}" class="button is-rounded ${DOMStrings.filterInputCL}" ${glitchData}="${el.name}">
                         <input id="${el.name}" class="${DOMStrings.hideVisualCL}" type="checkbox" value="${el.name.toLowerCase()}">
                         <span>${el.name}</span><span class="icon">${el.icon}</span>
                     </label>`;
@@ -345,6 +356,9 @@
                         chk = DOMStrings.checkCL;
                         // swap label colors
                         swapColor(tNode.style);
+
+                        // toggling glitch effect
+                        tNode.classList.toggle(DOMStrings.glitchStaticCL);
 
                         if(tNode.classList.contains(chk)) {
                             // if checked, remove checked, delete data-filtter from filter array
@@ -384,15 +398,16 @@
                     // a string generating the entire html markup for card and modal element
                     let cardModalStr = `
                     <div class="column is-4 ${DOMStrings.projectCL} ${tagclass}">
-                        <div class="card modal-button" data-target="modal-id-${(i+1)}">
-                            <div class="card-image">
+                        <div class="card proj-card modal-button" data-target="modal-id-${(i+1)}">
+                            <div class="card-image proj-card-img">
                                 <figure class="image is-3by2">
                                     <img src="${el.projectImage}" alt="${("Image for " + el.projectName)}">
+                                    <div class="proj-card-license">${toPaste}</div>
                                 </figure>
                             </div>
                             <div class="card-content">
                                 <div class="content has-text-centered">
-                                    <p class="title is-5">${el.projectName}</p>
+                                    <p class="title is-5 proj-card-title fields">${el.projectName}</p>
                                 </div>
                             </div>
                         </div>
@@ -400,27 +415,25 @@
                         <div id="modal-id-${(i+1)}" class="modal modal-fx-3dSlit">
                             <div class="modal-background is-primary"></div>
                             <div class="modal-content">
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">${el.projectName}</p>
-                                        <button class="delete" aria-label="close"></button>
+                                <div class="card proj-modal">
+                                    <header class="card-header">
+                                        <p class="card-header-title">${el.projectName}</p>
+                                        <button class="delete is-large card-header-icon" aria-label="close"></button>
                                     </header>
-        
-                                    <section class="modal-card-body">
-                                        <figure class="image is-3by2">
-                                            <img class="project-img" src="${el.projectImage}" alt="${("Image for " + el.projectName)}">
-                                            <div class="project-license">${toPaste}</div>
-                                        </figure><br>
+
+                                    <div class="card-content proj-modal-body">
                                         <p class="project-heading">${el.heading}</p>
-                                        <p class="project-desc">${el.projectDesc}</p>
+                                        <p class="project-desc content is-small">${el.projectDesc}</p>
                                         <div class="tags is-rounded">${tagstr}</div>
-                                    </section>
-        
-                                    <footer class="modal-card-foot is-flex is-flex-centered">
-                                        <a target="_blank" href="${el.sourceCode}" class="button is-rounded is-outlined">
-                                            <span>View Project</span><span class="icon">${el.sourceIcon}</span>
-                                        </a>
-                                    </footer>
+                                        <div class="columns is-flex is-flex-centered">
+                                        <div class="column"><p class="project-license"><strong>License:</strong> ${toPaste}</p></div>
+                                        <div class="column">
+                                                <a target="_blank" href="${el.sourceCode}" class="button is-rounded is-outlined proj-button">
+                                                    <span>View Project</span><span class="icon">${el.sourceIcon}</span>
+                                                </a>
+                                        </div>
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -447,6 +460,18 @@
         }
         // destroy the contact info (trying to)
         Data.contact.phone = Data.contact.email = Data.contact.address = "";
+        
+        // create a list of buttons for contact links
+        let linkbtn, linkbtnList="", footerlink, ftlinkList="";
+        Data.contact.catchMeOn.forEach(el => {
+            linkbtn = `<a target="_blank" href="${el.link}" class="button is-small is-outlined contact-btn-link"><span>${el.name}</span><span class="icon">${el.icon}</span></a>`;
+            linkbtnList += linkbtn;
+            footerlink = `<a target="_blank" href="${el.link}" class="footer-link"><span class="icon">${el.icon}</span></a>`;
+            ftlinkList += footerlink;
+        });
+        document.getElementById(DOMStrings.contactLinksID).insertAdjacentHTML('beforeend', linkbtnList);
+        document.getElementById(DOMStrings.linksFooterID).insertAdjacentHTML('beforeend', ftlinkList);
+
         // If Data.contact.useContactForm is true, then contact form will work, else hide
         if(Data.contact.useContactForm) {
             document.getElementById(DOMStrings.contactFormID).action = Data.contact.contactForm.action;
@@ -464,34 +489,44 @@
 
         // styling code for page elements
         (function(){
-            // an onj keeping all id and class info for styling
+            // apply pseudo edits on top nav tabs
+            applyPsuedoEl(`${StyleStrings.topNavItems}`, "hover", "color", (Settings.todayTheme + " !important"));
+            applyPsuedoEl(`${StyleStrings.topNavItems}`, "hover", "border-bottom-color", (Settings.todayTheme + " !important"));
 
             // set colors for special buttons
-            let myBtns = getAll(".is-btn-special");
-            myBtns.forEach(el => {el.style.backgroundColor = dynamicStyle.fontCol;});
+            let myBtns = getAll(`.${StyleStrings.splBtnCL}`);
+            myBtns.forEach(el => {el.style.backgroundColor = Settings.todayTheme;});
 
-            // apply color to all special fields
-            let allFields = getAll(".fields");
-            allFields.forEach(el => {el.style.color = dynamicStyle.fontCol;});
+            // apply color to all special fields(F) and Footer Links(FL)
+            let all_F_FL = getAll(`.${StyleStrings.fieldCL}, .${StyleStrings.footerLinkCL}`);
+            all_F_FL.forEach(el => {el.style.color = Settings.todayTheme;});
 
             // apply pseudo element edits on timeline
-            applyPsuedoEl(".timeline", ":before", "background", Settings.todayTheme);
-            applyPsuedoEl(".tl-title", ":before", "border", ("4px solid " + Settings.todayTheme + " !important"));
-            applyPsuedoEl(".tl-end", ":before", "border", ("4px solid " + Settings.todayTheme + " !important"));
-
+            applyPsuedoEl(`.${StyleStrings.tlMainCL}`, ":before", "background", Settings.todayTheme);
+            applyPsuedoEl(`.${StyleStrings.tlItemCL}, .${StyleStrings.tlEndCL}`, ":before", "border", ("4px solid " + Settings.todayTheme + " !important"));
 
             if (Data.portfolio.display.recentWork) {
 
                 // set color for tag filter buttons
                 let filterList = getAll(`.${DOMStrings.filterInputCL}`);
-                for (let i = 0; i < filterList.length; i++)
-                {
-                    filterList[i].style.color = dynamicStyle.fontCol;
-                    filterList[i].style.backgroundColor = dynamicStyle.bgCol;
+                for (let i = 0; i < filterList.length; i++) {
+                    filterList[i].style.color = Settings.todayTheme;
+                    filterList[i].style.backgroundColor = StyleStrings.bgCol;
                 }
 
-                // apply pseudo class edits on project cards
-                applyPsuedoEl(".card-image", "hover", "border-color", Settings.todayTheme);
+                // apply theme color to all project cards in recent works grid
+                let allCards = getAll(`.${StyleStrings.projectCardCL}`);
+                allCards.forEach(el => {el.style.borderColor = Settings.todayTheme});
+
+                // apply pseudo hover class edits on contact link buttons and project buttons
+                let bothCLStr = `.${StyleStrings.contactBtnLinkCL}, .${StyleStrings.projectButtonCL}`;
+                applyPsuedoEl(bothCLStr, "hover", "color", Settings.todayTheme);
+                applyPsuedoEl(bothCLStr, "hover", "border-color", Settings.todayTheme);
+
+                // apply pseudo focus class edits to all buttons in website
+                let allBtnFormStr = `${bothCLStr}, .${StyleStrings.splBtnCL}, ${StyleStrings.formControls}`;
+                applyPsuedoEl(allBtnFormStr, "focus", "border-color", (Settings.todayTheme + " !important"));
+                applyPsuedoEl(allBtnFormStr, "focus", "box-shadow", ("0 0 5px " + Settings.todayTheme));
             }
         })();
 
@@ -500,8 +535,9 @@
             let rootEl = document.documentElement;
             let allModals = getAll('.modal');
             let modalButtons = getAll('.modal-button');
-            let modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
-
+            // added ".card-header .delete" below as I used card as modal content
+            let modalCloses = getAll('.modal-background, .modal-close, .card-header .delete, .modal-card-head .delete, .modal-card-foot .button');
+            
             if (allModals.length > 0) {
                 modalButtons.forEach(function (el) {
                     el.addEventListener('click', function () {

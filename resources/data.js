@@ -17,6 +17,7 @@
                 month : 8,
                 year : 1995
             },
+            cvLink: "https://www.wikipedia.org/",
             job : "Web Developer",
             profilePicture: "./resources/images/Shockwave_0.jpg",
             aboutMe : "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis hic culpa explicabo officiis illum necessitatibus tenetur perferendis, dolores cumque ipsam quos velit laboriosam similique. Consequuntur accusamus eum perferendis provident, quia, totam cupiditate ut fuga molestiae ad pariatur praesentium nihil ratione quibusdam unde nostrum voluptatem corporis veniam aperiam, doloremque sapiente facilis!",
@@ -170,7 +171,7 @@
                     sourceIcon : '<i class="fab fa-github"></i>',
                     projectTags : ["Pyhton", "HTML", "CSS", "JavaScript"],
                     license : {
-                        text : '<i class="fab fa-creative-commons"></i> - <i class="fab fa-creative-commons-nc"></i> - <i class="fab fa-creative-commons-by"></i> - <i class="fab fa-creative-commons-sa"></i> 4.0',
+                        text : '<i class="fab fa-creative-commons"></i>-<i class="fab fa-creative-commons-nc"></i>-<i class="fab fa-creative-commons-by"></i>-<i class="fab fa-creative-commons-sa"></i> 4.0',
                         svg : ""
                     }
                 },
@@ -320,8 +321,33 @@
             catchMeOn : [
                 {
                     name: "LinkedIn",
-                    icon : "",
-                    link: ""
+                    icon : '<i class="fab fa-linkedin"></i>',
+                    link: "https://www.linkedin.com/"
+                },
+                {
+                    name: "Github",
+                    icon: '<i class="fab fa-github"></i>',
+                    link: "https://github.com/"
+                },
+                {
+                    name: "HackerRank",
+                    icon: '<i class="fab fa-hackerrank"></i>',
+                    link: "https://www.hackerrank.com/"
+                },
+                {
+                    name: "Facebook",
+                    icon: '<i class="fab fa-facebook"></i>',
+                    link: "https://www.facebook.com/"
+                },
+                {
+                    name: "Twitter",
+                    icon: '<i class="fab fa-twitter"></i>',
+                    link: "https://twitter.com/"
+                },
+                {
+                    name: "Kaggle",
+                    icon: '<i class="fab fa-kaggle"></i>',
+                    link: "https://www.kaggle.com/"
                 }
             ],
             useContactForm: true,

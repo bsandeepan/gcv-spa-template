@@ -69,6 +69,7 @@
                     
                     <div id="gcvNavbarItems" class="navbar-menu">
                         <div class="navbar-start">
+                            <!-- Blog Link will be here -->
                             <!-- <a class="navbar-item is-tab">Blog</a> -->
                         </div>
                         <div class="navbar-end">
@@ -87,8 +88,8 @@
             <section id="gcv-landing" class="hero is-medium">
                 <div class="hero-body">
                     <div class="container content has-text-centered">
-                        <h1 id="landingTitle" class="title is-1"></h1>
-                        <h3 id="landingTag" class="subtitle is-5 wtag-space"></h3>
+                        <h1 id="landingTitle" class="title is-1 glitch-hover-effect" data-glitch=""></h1>
+                        <h3 id="landingTag" class="subtitle is-5 wtag-space glitch-static-effect" data-glitch=""></h3>
                     </div>
                 </div>
                 <section id="landingscroll" class="scroller">
@@ -104,7 +105,7 @@
                 <section class="hero">
                     <div class="hero-body">
                         <div class="container content has-text-centered">
-                            <h1 class="title is-1">PROFILE</h1>
+                            <h1 class="title is-1 glitch-static-effect" data-glitch="PROFILE">PROFILE</h1>
                         </div>
                     </div>
                 </section>
@@ -115,7 +116,8 @@
                     <div class="columns">
                         <div class="column is-one-fifth is-flex is-flex-centered">
                             <figure class="image is-128x128">
-                                <img id="personImage" class="is-rounded" src="">
+                                <img id="personImage" class="" src="">
+                                <!-- add "is-rounded" to class attr to make the image rounded -->
                             </figure>
                         </div>
                         <div class="column">
@@ -147,7 +149,7 @@
                         <!-- download CV link -->
                         <div class="column is-one-fifth is-flex is-flex-full-centered is-flex-col-rev">
                             <p class="content is-small">(to dig deeper)</p>
-                            <a href="#" id="btn-cv" class="button is-btn-special">Download CV</a>
+                            <a href="#" target="_blank" id="btn-cv" class="button is-btn-special">Download CV</a>
                         </div>
                     </div>
                 </section>
@@ -217,7 +219,7 @@
                 <section class="hero">
                     <div class="hero-body">
                         <div class="container content has-text-centered">
-                            <h1 class="title is-1">PORTFOLIO</h1>
+                            <h1 class="title is-1 glitch-static-effect" data-glitch="PORTFOLIO">PORTFOLIO</h1>
                         </div>
                     </div>
                 </section>
@@ -245,7 +247,7 @@
                 <section class="hero">
                     <div class="hero-body">
                         <div class="container content has-text-centered">
-                            <h1 class="title is-1">CONTACT</h1>
+                            <h1 class="title is-1 glitch-static-effect" data-glitch="CONTACT">CONTACT</h1>
                         </div>
                     </div>
                 </section>
@@ -254,6 +256,12 @@
                     <div class="columns is-multiline">
                         <div class="column is-full"><p id="contactStatement"></p></div>
                         <!-- if asked, contact info columns will appear here -->
+                        <div class="column is-full">
+                            <p class="buttons"  id="catchME">
+                                <span class="fields" id="catch-me-btn">Catch me on: </span>
+                                <!-- Here comes the contact link buttons -->
+                            </p>
+                        </div>
                     </div>
                     <!-- Message form is here -->
                     <form id="contactForm" method="post" action="">
@@ -310,13 +318,8 @@
                     </div>
                     
                     <div class="navbar-menu">
-                        <div class="navbar-start">
-                            <!-- <a class="navbar-item is-tab">Blog</a> -->
-                        </div>
-                        <div class="navbar-end">
-                            <!-- <a class="navbar-item is-tab" href="#profile">Profile</a>
-                            <a class="navbar-item is-tab" href="#portfolio">Portfolio</a>
-                            <a class="navbar-item is-tab" href="#contact">Contact</a> -->
+                        <div class="navbar-end is-hidden-touch">
+                            <p id="links-footer"><strong>Catch me on: </strong><!-- Footer Links--></p>
                         </div>
                     </div>
                 </div>

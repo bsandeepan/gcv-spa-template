@@ -23,6 +23,7 @@
 }
 .frame-top {
   top: 0;
+  bottom: auto;
 }
 .frame-bottom {
   bottom: 0;
@@ -30,6 +31,7 @@
 }
 .frame-left {
   left: 0;
+  right: auto;
 }
 .frame-right {
   right: 0;

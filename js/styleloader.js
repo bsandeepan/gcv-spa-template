@@ -47,7 +47,7 @@
         year = today.getFullYear();
         authorCred = `Sandeepan B.`;
         projectName = `GlitchCV`;
-        sourceCode = `<a target="_blank" href="https://github.com/"><i class="fab fa-github-alt"></i></a>`;
+        sourceCode = `<a target="_blank" href="https://github.com/" style="color: ${Settings.todayTheme};"><i class="fab fa-github-alt"></i></a>`;
         creditsStr = `${copyright} ${year} ${projectName}. Made by ${authorCred} ${sourceCode}`;
         document.getElementById("credits").insertAdjacentHTML('afterbegin', creditsStr);
 
