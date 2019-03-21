@@ -1,6 +1,4 @@
-// DO NOT TOUCH
 (function(window) {
-
     // MODIFY FROM HERE
     var Data = {
         landing : {
@@ -12,10 +10,11 @@
     
         profile : {
             profileName : "Sandeepan Bhattacharyya",
+            showAge: true,
             dateOfBirth : {
-                date : 17,
-                month : 8,
-                year : 1995
+                date : 7,
+                month : 5,
+                year : 1991
             },
             cvLink: "https://www.wikipedia.org/",
             job : "Web Developer",

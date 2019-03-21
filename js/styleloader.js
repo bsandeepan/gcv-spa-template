@@ -1,8 +1,18 @@
-/**This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
- * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+/**
+ * @copyright Sandeepan Bhattacharyya
+ * @license
+ * This work is licensed under the Creative Commons 
+ *      Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ *      To view a copy of this license, visit 
+ *      http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to 
+ *      Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+ * 
+ * @author Sandeepan Bhattacharyya <bsandeepan95.work@gmail.com>
+ * @file This script manages initial config settings for the website.
 */
 
-/***This script deals with initial settings. Contains $$ sections of code -
+/** 
+ * Content:
  * 1.   Initiation Code: it contains -
  *      - initial variable declarations.
  *      - setting today's theme.
@@ -18,7 +28,7 @@
  */
 
 ( function() {
-    /** ************************ Initiation Code ************************ */
+    /* ************************ Initiation Code ************************ */
     // Creating a new date obj
     let today = new Date();
     
@@ -31,7 +41,7 @@
     // Load the main Stylesheets and Scripts from CDNs or fall back to local copies.
     fallback.load(Settings.toLoad);
 
-    /** ************************ DOMContentLoaded Code ************************ */
+    /* ************************ DOMContentLoaded Code ************************ */
     // After basic HTML Structure is loaded, do these things.
     document.addEventListener('DOMContentLoaded', (event) => {
         // Navbar Burger Toggle
@@ -50,9 +60,9 @@
         copyright = `<i class="far fa-copyright"></i>`;
         year = today.getFullYear();
         authorCred = `Sandeepan B.`;
-        projectName = `GlitchCV`;
-        sourceCode = `<a target="_blank" href="https://github.com/" style="color: ${Settings.todayTheme};"><i class="fab fa-github-alt"></i></a>`;
-        creditsStr = `${copyright} ${year} ${projectName}. Made by ${authorCred} ${sourceCode}`;
+        projectName = `GCV SPA`;
+        sourceCode = `<a target="_blank" href="https://github.com/bsandeepan95/gcv-spa-template" style="color: ${Settings.todayTheme};">${projectName}</a>`;
+        creditsStr = `${copyright} ${year} ${sourceCode}. Made by ${authorCred}`;
         document.getElementById("credits").insertAdjacentHTML('afterbegin', creditsStr);
 
         // load the last scripts

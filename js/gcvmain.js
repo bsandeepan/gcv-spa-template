@@ -1,25 +1,33 @@
-/**This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
- * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+/**
+ * @copyright Sandeepan Bhattacharyya 2019
+ * @license
+ * This work is licensed under the Creative Commons 
+ *      Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ *      To view a copy of this license, visit 
+ *      http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to 
+ *      Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+ * 
+ * @author Sandeepan Bhattacharyya <bsandeepan95.work@gmail.com>
+ * @file This script loads website data and applies related styles.
 */
 
-/**Loads website data and applies related styles. It contains $$ sections of code -
- * 1.   Variable Declarations: it contains -
- *      - DOMStrings: An one-stop obj solution to maintain all DOM IDs and classnames(CL)
- *      - StyleStrings: An obj keeping all id and class info for dynamic styling
- *      - pseudoUID : Keeps tract of current pseudo UID and increments it per use
+/**
+ * Content:
+ * 1.   *Variable Declarations*: it contains objects holding important strings 
+ *          to manipulate DOM, and other important variables. 
  * 
- * 2.   Function Declarations: It contains -
+ * 2.   *Function Declarations*: It contains -
  *      - General functions
  *      - Age calculation function
  *      - List (unordered) generation function
  *      - Filtering function
  *      - Timeline functions
  * 
- * 3.   Data Loading Section: This section loads all displayable data from 'data.js' file
- *      and attaches necessary event listeners.
+ * 3.   *Data Loading Section*: This section loads all displayable data from 'data.js' file
+ *          and attaches necessary event listeners.
  * 
- * 4.   AfterLoaded Code: For things to do after entire website 
- *      content is loaded. It contains -
+ * 4.   *AfterLoaded Code*: For things to do after entire website 
+ *          content is loaded. It contains -
  *      - toggle display state for preloader and main body
  *      - apply pseudo element edits on timeline
  *      - if (Data.portfolio.display.recentWork) then color the tags
@@ -28,10 +36,13 @@
  */
 
 ( function() {
-    /** ************************ Variable Declarations ************************ */
+    /* ========================================================================== */
+    // Variable Declarations
+    /* ========================================================================== */
 
-    // Link to guidelines for publications (a helpful thing)
+    /**Link to guidelines for publications (a helpful thing) */
     let pubGuideLink = `http://wiki.lib.sun.ac.za/images/5/5d/Online_Visibility_Guidelines.pdf`;
+    /**maps HTML data-attribute that contains content to apply glitch effect upon */
     let glitchData = "data-glitch";
 
     /**An one-stop obj solution to maintain all DOM IDs and classnames(CL) */
@@ -51,8 +62,10 @@
         myImageID : "personImage",
         myAboutMeID : "personAboutMe",
         myNameID : "personName",
+        colAgeCL: "col-age",
         myAgeID : "personAge",
         myJobID : "personJob",
+        colResidenceCL: "col-residence",
         myResidenceID : "personResidence",
         cvBtnID: "btn-cv",
         expTLID : "tl-exp",
@@ -80,7 +93,7 @@
         linksFooterID: "links-footer"
     };
 
-    // an obj keeping all id and class info for dynamic styling
+    /**An obj keeping all id and class info for dynamic styling */
     let StyleStrings = {
         // general style options
         bgCol: "white",
@@ -108,20 +121,37 @@
         }
     };
 
-    /** ************************ Function Declarations ************************ */
+    /* ========================================================================== */
+    // Function Declarations
+    /* ========================================================================== */
 
-    /** Toggle hideHard class for selected node. Uses querySelector() method */
+    /**
+     * Toggle hideHard class for selected node. Uses querySelector() method.
+     * @param {Node} selector DOM Node value to search
+     */
     function toggleHide (selector) {document.querySelector(selector).classList.toggle(DOMStrings.hideHardCL);}
 
-    /**Gets all queried nodes and returns an array of them. Uses querySelectorAll() method. 
+    /**
+     * Gets all queried nodes and returns an array of them. Uses querySelectorAll() method. 
      * To fetch multiple separate nodes, provide them using comma(,).
-    */
+     * @param {Node} selector DOM Node value to search
+     * @returns {Array} An array created from NodeList
+     */
     function getAll (selector) {return Array.prototype.slice.call(document.querySelectorAll(selector), 0);}
 
-    /** swaps color and backgroundcolor properties of selected node */
+    /**
+     * swaps color and backgroundcolor properties of selected node.
+     * @param {Object} elSt Node.style Object
+     */
     function swapColor (elSt) {[elSt.color, elSt.backgroundColor] = [elSt.backgroundColor, elSt.color];}
 
-    /**Calculates age in years (x years) */
+    /**
+     * Calculates age in years.
+     * @param {number} dobYear year value of D.O.B. (ex: 2020)
+     * @param {number} dobMonth month value of D.O.B. (1 to 12) 
+     * @param {number} dobDate date value of D.O.B. (1 to 28/29/30/31)
+     * @returns {string} a string with value as "X years" where 'X' is age.
+     */
     function calculate_age(dobYear, dobMonth, dobDate)
     {
         let tDate, tYear, tMonth, tDay, ageYears, ageText="";
@@ -137,7 +167,11 @@
         return ageText;
     }
 
-    /**creates an unordered list of given array of items */
+    /**
+     * Creates an unordered list of given array of items.
+     * @param {Array} arr An array of list items
+     * @returns {string} A HTML <ul> String
+     */
     function listAll (arr) {
         let item, listItem="";
         arr.forEach(el => {
@@ -147,9 +181,13 @@
         return `<ul>${listItem}</ul>`;
     }
 
-    /**Takes an array of filter data as arguments. Then selects an array of specified
+    /**
+     * Takes an array of filter data as arguments. Then selects an array of specified
      * selector (targeted List), and based on filter data, shows all elements of the
      * Targeted List that has the data filters present in their className.
+     * @summary Filters a selection based on values in filter_array.
+     * @param {Array} filter_arr An array containing filter values.
+     * @param {Node} selector DOM Node value to search
      */
     function filterSelection(filter_arr, selector) {
         let x = getAll(selector);        
@@ -168,8 +206,17 @@
         }
     }
 
-    /**Finds Selector and makes a style element for it containing
-     * pseudo element modifications.
+    /**
+     * Finds Selector and makes a style element for it containing
+     * pseudo element/class modifications. All paramenters are fetched 
+     * from another function.
+     * 
+     * _Note_: We extended HTMLElement.prototype to serve our purpose 
+     * which can be risky often hence must be used with caution.
+     * @param {Node} selector DOM Node value to search
+     * @param {string} element pseudo class/element
+     * @param {string} prop CSS property name
+     * @param {string} value CSS property value
      */
     HTMLElement.prototype.pseudoStyle = function(selector,element,prop,value){
         var _this = this;
@@ -187,17 +234,27 @@
         return this;
     };
 
-    /**Selects Nodelist for selector and applies pseudo element modifications
-     * NOTE: For pseudo element, you need to enter them prepended with an "colon (:)".
+    /**
+     * Selects Nodelist for selector and applies pseudo element modifications.
+     * Uses querySelectorAll() method.
+     * 
+     * *Note*: For pseudo element, you need to enter them prepended with an "colon (:)".
      * Example - provide "::before" as ":before" in element field
      * For psuedo class, providing "hover" will create ":hover" by itself
+     * @param {Node} selector DOM Node value to search
+     * @param {string} element pseudo class/element
+     * @param {string} prop CSS property name
+     * @param {string} value CSS property value
      */
     function applyPsuedoEl(selector,element,prop,value) {
         var el = document.querySelectorAll(selector);
         for(var i = 0; i < el.length; i++) el[i].pseudoStyle(selector,element,prop,value);
     }
 
-    /** ************************ Data Loading Section ************************ */
+    /* ========================================================================== */
+    // Data Loading Section
+    /* ========================================================================== */
+
     document.addEventListener('DOMContentLoaded', (ev) => {
         // Loading landing page data
         document.getElementById(DOMStrings.brandNameID).innerText = Data.landing.brandName;
@@ -212,11 +269,19 @@
         document.getElementById(DOMStrings.myAboutMeID).innerText = Data.profile.aboutMe;
         document.getElementById(DOMStrings.myNameID).innerText = Data.profile.profileName;
         document.getElementById(DOMStrings.myJobID).innerText = Data.profile.job;
-        document.getElementById(DOMStrings.myResidenceID).innerText = Data.profile.residence;
-        document.getElementById(DOMStrings.myAgeID).innerText = calculate_age(  Data.profile.dateOfBirth.year,
-                                                                                Data.profile.dateOfBirth.month,
-                                                                                Data.profile.dateOfBirth.date
-        );
+        if (Data.profile.residence !== "") {
+            document.getElementById(DOMStrings.myResidenceID).innerText = Data.profile.residence;
+        }
+        else {toggleHide(`.${DOMStrings.colResidenceCL}`);}
+        if(Data.profile.showAge) {
+            document.getElementById(DOMStrings.myAgeID).innerText = calculate_age(  Data.profile.dateOfBirth.year,
+                                                                                    Data.profile.dateOfBirth.month,
+                                                                                    Data.profile.dateOfBirth.date
+            );
+        }
+        else {toggleHide(`.${DOMStrings.colAgeCL}`);}
+        // destroy dob info
+        Data.profile.dateOfBirth.year = Data.profile.dateOfBirth.month = Data.profile.dateOfBirth.date = "";
         document.getElementById(DOMStrings.cvBtnID).href = Data.profile.cvLink;
 
         // loading experience, education, hobbies, skilset, language data
@@ -404,7 +469,7 @@
                     <div class="column is-4 ${DOMStrings.projectCL} ${tagclass}">
                         <div class="card proj-card modal-button" data-target="modal-id-${(i+1)}">
                             <div class="card-image proj-card-img">
-                                <figure class="image is-3by2">
+                                <figure class="image is-${Settings.projImgRatio}">
                                     <img src="${el.projectImage}" alt="${("Image for " + el.projectName)}">
                                     <div class="proj-card-license">${toPaste}</div>
                                 </figure>
@@ -484,7 +549,10 @@
         else{toggleHide(`#${DOMStrings.contactFormID}`);}
     });
 
-    /** ************************ AfterLoaded Code ************************ */
+    /* ========================================================================== */
+    // AfterLoaded Code
+    /* ========================================================================== */
+
     // When ENTIRE window and document loading is done, do these
     window.addEventListener('load', function(event){
         // toggle display state for preloader and main body

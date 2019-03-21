@@ -1,4 +1,3 @@
-// DO NOT TOUCH
 (function(window) {
     // MODIFY FROM HERE
     var Settings = {
@@ -14,6 +13,7 @@
             "rgb(252, 130, 82)",
             "rgb(168, 94, 253)"
         ],
+        projImgRatio: "3by2",
         preLoad: {
             loaderHeading : "Website is loading faster than this cube running away!",
             loaderHTML : '<div id="loader"><div id="shadow"></div><div id="box"></div></div>',

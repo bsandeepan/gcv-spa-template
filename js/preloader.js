@@ -1,10 +1,19 @@
-/**This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
- * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+/**
+ * @copyright Sandeepan Bhattacharyya
+ * @license
+ * This work is licensed under the Creative Commons 
+ *      Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ *      To view a copy of this license, visit 
+ *      http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to 
+ *      Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+ * 
+ * @author Sandeepan Bhattacharyya <bsandeepan95.work@gmail.com>
+ * @file This script deals with things that should be operational before main 
+ *      website content is loaded.
 */
 
-/**This script deals with things that should be operational before main content is 
- * loaded. Contains TWO sections of code -
- * 
+/**
+ * Content:
  * 1.   Loader Animation Code: This is where loader animation code should go. If 
  *      you have no such code for your preferred animation, then leave it blank. 
  *      If any code for previous animation is here, delete it otherwisi it may 
@@ -19,12 +28,18 @@
  */
 
  ( function(){
-    /** ************************ Begin: Loader Animation Code ************************ */
+    /* ************************ Begin: Loader Animation Code ************************ */
     //  Code for loader animation goes here
-    /** ************************ End: Loader Animation Code ************************ */
+    /* ************************ End: Loader Animation Code ************************ */
 
-    /** ************************ Begin: Preloader Code ************************ */
-    /** Checks if DOM nodes are loaded. Uses querySelector() method */
+    /* ************************ Begin: Preloader Code ************************ */
+    /**
+     * Checks continuously if DOM nodes are loaded. Checking happenes in timed interval. 
+     *      Uses querySelector() method.
+     * @param {string} selector
+     * @param {number} timeout
+     * @param {function} callback
+     */
     function onReady(selector, timeout, callback) {
         var intervalId = window.setInterval(function() {
             if (document.querySelector(selector) !== undefined) {
@@ -34,7 +49,9 @@
         }, timeout);
     }
 
-    // an object containing important IDs and classNames for easy maintainance and manipulation
+    /**
+     * An obj containing important IDs and classNames for ease
+     */
     var preLoadStr = {
         framelineID : "#framelines",
         preloaderID: "#preloader",
@@ -67,5 +84,5 @@
             }
         }
     });
-    /** ************************ End: Preloader Code ************************ */
+    /* ************************ End: Preloader Code ************************ */
  })();

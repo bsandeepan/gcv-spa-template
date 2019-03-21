@@ -1,11 +1,11 @@
 {
-  "name": "glitch-cv-webtemp",
-  "version": "0.1.0",
+  "name": "gcv-spa",
+  "version": "0.1.1",
   "description": "A CV/Portfolio SPA web template for all to use. Beware! There will be a Glitch in your CV!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Sandeepan B.",
-  "license": "ISC"
+  "author": "Sandeepan Bhattacharyya <bsandeepan95.work@gmail.com>",
+  "license": "CC-BY-NC-SA 4.0"
 }

@@ -1,8 +1,15 @@
-/* This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
-   To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. 
-*/
+/*==============================================
+  author: Sandeepan Bhattacharyya <bsandeepan95.work@gmail.com>
+  license: This work is licensed under the Creative Commons 
+    Attribution-NonCommercial-ShareAlike 4.0 International License.
+    To view a copy of this license, visit 
+    http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter 
+    to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. 
+==============================================*/
 
-/* Sections:
+/* 
+desc: Contains styling code for framelines and preloader animation.
+Content:
     1. framelines (do not touch)
     2. preloader (touch with considerations)
     3. loader (change this if you change loading animation)

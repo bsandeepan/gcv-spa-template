@@ -4,6 +4,15 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script>
+            // detect IE8 or above and stop loading for them
+            if(document.documentMode) {
+                alert("We all deserve better things in life.\nI deserve to do better coding without thinking about IE browser compatibility, and you, my friend, deserve a better browser than Internet Explorer.\nTry out Mozilla Firefox tho! :)\n-Sandeepan Bhattacharyya");
+                document.execCommand('stop');
+            }</script>
+        <!-- Author -->
+        <meta name="author" content="Sandeepan Bhattacharyya <!bsandeepan95.work@gmail.com>">
+        <!-- Title Tag -->
         <title>A Glitch in your CV!</title>
         <!-- Viewport Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +40,6 @@
         <script src="./js/styleloader.js"></script>
         <!-- Font CDNs -->
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
-        <!--  CSS CDNs -->
     </head>
 
     <body class="has-navbar-fixed-top-bottom">
@@ -135,14 +143,15 @@
                                     <p><span class="fields">Name: </span><span id="personName"></span></p>
                                 </div>
                                 <div class="column ">
-                                    <p><span class="fields">Age: </span><span id="personAge"></span></p>
+                                    <p><span class="fields">Job: </span><span id="personJob"></span></p>
+                                    
                                 </div>
                             </div>
                             <div class="columns">
-                                <div class="column ">
-                                    <p><span class="fields">Job: </span><span id="personJob"></span></p>
+                                <div class="column col-age">
+                                    <p><span class="fields">Age: </span><span id="personAge"></span></p>
                                 </div>
-                                <div class="column ">
+                                <div class="column col-residence">
                                     <p><span class="fields">Residence: </span><span id="personResidence"></span></p>
                                 </div>
                             </div>
