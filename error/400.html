@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Author -->
+        <meta name="author" content="Sandeepan Bhattacharyya <!bsandeepan95.work@gmail.com>">
+        <!-- Title Tag -->
+        <title id="gcvTitleID">Error 400</title>
+        <!-- Viewport Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Loading Fallback JS -->
+        <script src="../js/lib/fallback.min.js"></script>
+        <!-- Load the Settings -->
+        <script src="../resources/settings.js"></script>
+        <style>
+            @media (min-width: 769px) {
+                #errorHero {
+                    padding-left: 10%;
+                    padding-right: 25%;
+                }
+            }
+            #errordesc {
+                margin-top: 2.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Framelines -->
+        <div id="framelines">
+            <div class="frame-line frame-top"></div>
+            <div class="frame-line frame-bottom"></div>
+            <div class="frame-line frame-left"></div>
+            <div class="frame-line frame-right"></div>
+        </div>
+        <!-- Error Page -->
+        <section class="hero is-medium">
+            <div class="hero-body">
+                <div id="errorHero" class="container content has-text-justified">
+                    <h1 class="title is-1">
+                        Bad Request
+                    </h1>
+                    <h2 id="errordesc" class="subtitle glitch-static-effect" data-glitch="The server cannot process the request due to something that is perceived to be a client error.">
+                        The server cannot process the request due to something that is perceived to be a client error. 
+                    </h2>
+                    <a href="./" id="btn-hp" class="button is-btn-special is-large">Go to Home</a>
+                </div>
+            </div>
+        </section>
+        <script src="../js/errorpage.js"></script>
+    </body>
+</html>

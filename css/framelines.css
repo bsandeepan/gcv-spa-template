@@ -1,0 +1,57 @@
+/*==============================================
+  author: Sandeepan Bhattacharyya <bsandeepan95.work@gmail.com>
+  license: This work is licensed under the Creative Commons 
+    Attribution-NonCommercial-ShareAlike 4.0 International License.
+    To view a copy of this license, visit 
+    http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter 
+    to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. 
+==============================================*/
+
+/* 
+desc: Contains styling code for framelines and preloader animation.
+Content:
+    1. framelines (do not touch)
+*/
+
+/* framelines style */
+.frame-line {
+    content: '';
+    position: fixed;
+    z-index: 120;
+  }
+  
+  .frame-top, .frame-bottom {
+    width: 100%;
+    height: 15px;
+    left: 0;
+  }
+  .frame-left, .frame-right {
+    width: 15px;
+    height: 100%;
+    top: 0;
+  }
+  .frame-top {
+    top: 0;
+    bottom: auto;
+  }
+  .frame-bottom {
+    bottom: 0;
+    top: auto;
+  }
+  .frame-left {
+    left: 0;
+    right: auto;
+  }
+  .frame-right {
+    right: 0;
+    left: auto;
+  }
+  @media (max-width: 768px) {
+    .frame-top, .frame-bottom {
+      height: 5px;
+    }
+    .frame-left, .frame-right {
+      width: 5px;
+    }
+  }
+  

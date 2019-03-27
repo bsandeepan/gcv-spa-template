@@ -52,19 +52,15 @@
     /**
      * An obj containing important IDs and classNames for ease
      */
-    var preLoadStr = {
-        framelineID : "#framelines",
-        preloaderID: "#preloader",
-    };
+    let preloaderID = "#preloader";
 
     // After preloader section is loaded, do these manipulations
-    onReady(preLoadStr.preloaderID, 500,  function() {
-        // put theme color in framelines
-        var frames = document.querySelector(preLoadStr.framelineID).getElementsByTagName("div");
-        for (let i = 0; i < frames.length; i++) frames[i].style.background = Settings.todayTheme;
+    onReady(preloaderID, 500,  function() {
+        // load framelines stylling
+        fallback.load(Settings.frameLoad);
 
         // select the parent preloader node into a variable
-        var queriedNode = document.querySelector(preLoadStr.preloaderID);
+        var queriedNode = document.querySelector(preloaderID);
 
         // insert Loading Header text content and font color from Settings (if exists)
         if (Settings.preLoad.loaderHeading !== "") {
