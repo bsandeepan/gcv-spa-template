@@ -48,7 +48,8 @@
     /**An one-stop obj solution to maintain all DOM IDs and classnames(CL) */
     let DOMStrings = {
         // general tags
-        preloaderID: "#preloader",
+        pagetitleID : "gcvTitleID",
+        preloaderID : "#preloader",
         mainBodyID : "#gcvSPA",
         hideHardCL : "hideHard",
         hideVisualCL : "hideVisual",
@@ -78,6 +79,7 @@
         publicationID : "publications",
         recentWorksID: "recentWorks",
         TagFiltersID : "tagbuttons",
+        resultNFID : "resultNF",
         portfolioListID : "portfoliolist",
         projectCL : "project",
         filterInputCL : "inputfilter",
@@ -187,13 +189,12 @@
      * Targeted List that has the data filters present in their className.
      * @summary Filters a selection based on values in filter_array.
      * @param {Array} filter_arr An array containing filter values.
-     * @param {Node} selector DOM Node value to search
+     * @param {Array} selector_arr An array containing selected DOM Nodes. 
      */
-    function filterSelection(filter_arr, selector) {
-        let x = getAll(selector);        
-        for (let i = 0; i < x.length; i++) {
-            let x_cl = x[i].classList;
-            let x_cn = x[i].className;
+    function filterSelection(filter_arr, selector_arr) {       
+        for (let i = 0; i < selector_arr.length; i++) {
+            let x_cl = selector_arr[i].classList;
+            let x_cn = selector_arr[i].className;
             // if any filter is selected then
             if(filter_arr[0]) {
                 // if all filters match, then show
@@ -256,6 +257,10 @@
     /* ========================================================================== */
 
     document.addEventListener('DOMContentLoaded', (ev) => {
+        // general data loading stuff
+        if (Data.landing.pageTitle === "") Data.landing.pageTitle = Data.landing.brandName;
+        document.getElementById(DOMStrings.pagetitleID).innerText = Data.landing.pageTitle;
+
         // Loading landing page data
         document.getElementById(DOMStrings.brandNameID).innerText = Data.landing.brandName;
         let greetStr = `${Data.landing.greeting} I am ${Data.landing.displayName}`;
@@ -418,11 +423,12 @@
                 tagfilters.addEventListener('click', function(event){
                     if (event.target.classList.contains(DOMStrings.hideVisualCL)) {
                         event.stopPropagation();
-                        let tNode, tNodeInput, data, chk;
+                        let tNode, tNodeInput, data, chk, allProjects;
                         tNodeInput = event.target;
                         tNode = tNodeInput.parentNode;
                         data = tNodeInput.value;
                         chk = DOMStrings.checkCL;
+                        allProjects = getAll(`.${DOMStrings.projectCL}`);
                         // swap label colors
                         swapColor(tNode.style);
 
@@ -441,7 +447,24 @@
                             filterArr.push(data);
                         }
                         // call filter selector function for project list
-                        filterSelection(filterArr, `.${DOMStrings.projectCL}`);
+                        filterSelection(filterArr, allProjects);
+
+                        // if no results are found, do these
+                        let rnfNode = document.getElementById(DOMStrings.resultNFID);
+                        if (allProjects.every(e => e.className.includes(DOMStrings.hideHardCL))) {
+                            let sepVal =  (filterArr.length === 2) ? " and " : ", ";
+                            let rnfText = `${Settings.RNF.text} ${filterArr.join(sepVal)}!`;
+                            rnfNode.firstElementChild.innerText = rnfText
+                            rnfNode.firstElementChild.setAttribute(glitchData, rnfText);
+                            if(rnfNode.className.includes(DOMStrings.hideHardCL)) {
+                                rnfNode.classList.remove(DOMStrings.hideHardCL);
+                            }
+                        }
+                        else {
+                            if(!rnfNode.className.includes(DOMStrings.hideHardCL)) {
+                                rnfNode.classList.add(DOMStrings.hideHardCL);
+                            }
+                        }
                     }
                 });
 
@@ -575,7 +598,8 @@
 
             // apply pseudo element edits on timeline
             applyPsuedoEl(`.${StyleStrings.tlMainCL}`, ":before", "background", Settings.todayTheme);
-            applyPsuedoEl(`.${StyleStrings.tlItemCL}, .${StyleStrings.tlEndCL}`, ":before", "border", ("4px solid " + Settings.todayTheme + " !important"));
+            applyPsuedoEl(`.${StyleStrings.tlItemCL}`, ":before", "border-right-color", (Settings.todayTheme + " !important"));
+            applyPsuedoEl(`.${StyleStrings.tlEndCL}`, ":before", "border-bottom-color", (Settings.todayTheme + " !important"));
 
             if (Data.portfolio.display.recentWork) {
 

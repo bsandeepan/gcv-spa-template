@@ -137,7 +137,7 @@ ul li::before {
 .wtag-space,
 .wtag-space::before,
 .wtag-space::after {
-  padding-top: 10px;
+  padding-top: 0.5rem;
 }
 
 /* 07. Profile Page Style */
@@ -157,6 +157,9 @@ ul li::before {
 .pubtitle {
   font-size: 1.2rem;
   font-style: oblique;
+}
+#resultNF {
+  margin: 4rem 0;
 }
 .proj-card {
   border: 5px solid black;
@@ -200,13 +203,13 @@ ul li::before {
 
 /* 09. Contact Page Style */
 #catch-me-btn {
-  padding: 0 10px 5px 0 !important;
+  padding: 0 0.5rem 0.25rem 0 !important;
 }
 
 /* 10. Scroll Animation */
 .scroller a {
   position: relative;
-  top: 95%;
+  top: 96%;
   bottom: 20px;
   left: auto;
   right: auto;
@@ -260,7 +263,7 @@ ul li::before {
 /* 11. Timeline */
 .timeline {
   width: 100%;
-  padding: 10px;
+  padding: 0.5rem;
   position: relative;
 }
 .timeline * {
@@ -271,7 +274,7 @@ ul li::before {
   content: "";
   position: absolute;
   top: 0px;
-  left: 33%;
+  left: 32%;
   bottom: 0px;
   width: 0.25rem;
 }
@@ -288,21 +291,20 @@ ul li::before {
 .tl-entry .tl-title {
   margin-bottom: 0.5em;
   float: left;
-  width: 33%;
-  padding-right: 30px;
+  width: 32%;
+  padding-right: 2rem;
   text-align: right;
   position: relative;
 }
 .tl-entry .tl-title::before {
   content: "";
   position: absolute;
-  width: 1rem;
+  width: 2.5rem;
   height: 1rem;
-  border: 4px solid salmon;
+  border-right: 0.25rem solid salmon;
   background-color: #fff;
-  border-radius: 100%;
-  top: 15%;
-  right: -7px;
+  top: 16%;
+  right: -0.5rem;
   z-index: 90;
 }
 .tl-entry .tl-title h3 {
@@ -311,14 +313,14 @@ ul li::before {
 .tl-entry .tl-body {
   margin: 0 0 1.5em;
   float: right;
-  width: 66%;
-  padding-left: 30px;
+  width: 64%;
+  padding-left: 2rem;
 }
 .tl-entry .tl-body h3 {
   margin: 0;
 }
 .tl-entry .tl-body p {
-  line-height: 1.2rem;
+  line-height: 1.25rem;
   margin-top: 1rem;
   font-weight: 500;
 }
@@ -326,267 +328,16 @@ ul li::before {
   clear: both;
   position: relative;
   float: left;
-  left: 33%;
+  left: 32%;
 }
 .tl-end::before {
   content: "";
   position: absolute;
-  width: 1rem;
-  height: 1rem;
-  border: 4px solid salmon;
-  background-color: #fff;
-  border-radius: 100%;
-  top: 15%;
-  right: -7px;
+  width: 5rem;
+  height: 0.5rem;
+  margin-top: 0.125rem;
+  border-bottom: 0.25rem solid salmon;
+  top: 16%;
+  right: -4rem;
   z-index: 90;
-}
-
-/* 12. Glitch Effect */
-
-/* glitch static */
-.glitch-static-effect {
-    position: relative;
-}
-.glitch-static-effect::before,
-.glitch-static-effect::after {
-    content: attr(data-glitch);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-.glitch-static-effect::before {
-    left: 1px;
-    text-shadow: -1px 0 #49FC00;
-    clip: rect(24px, 550px, 90px, 0);
-    animation: glitch-anim-2 3s infinite linear alternate-reverse;
-}
-.glitch-static-effect::after {
-    left: -1px;
-    text-shadow: -1px 0 #b300fc;
-    clip: rect(85px, 550px, 140px, 0);
-    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
-}
-@keyframes glitch-anim-1 {
-    0% {
-        clip: rect(42px, 9999px, 5px, 0);
-    }
-    4.166666666666666% {
-        clip: rect(55px, 9999px, 54px, 0);
-    }
-    8.333333333333332% {
-        clip: rect(73px, 9999px, 132px, 0);
-    }
-    12.5% {
-        clip: rect(17px, 9999px, 70px, 0);
-    }
-    16.666666666666664% {
-        clip: rect(63px, 9999px, 142px, 0);
-    }
-    20.833333333333336% {
-        clip: rect(53px, 9999px, 68px, 0);
-    }
-    25% {
-        clip: rect(45px, 9999px, 131px, 0);
-    }
-    29.166666666666668% {
-        clip: rect(15px, 9999px, 97px, 0);
-    }
-    33.33333333333333% {
-        clip: rect(8px, 9999px, 62px, 0);
-    }
-    37.5% {
-        clip: rect(25px, 9999px, 81px, 0);
-    }
-    41.66666666666667% {
-        clip: rect(150px, 9999px, 106px, 0);
-    }
-    45.83333333333333% {
-        clip: rect(29px, 9999px, 116px, 0);
-    }
-    50% {
-        clip: rect(68px, 9999px, 143px, 0);
-    }
-    54.166666666666664% {
-        clip: rect(73px, 9999px, 86px, 0);
-    }
-    58.333333333333336% {
-        clip: rect(83px, 9999px, 21px, 0);
-    }
-    62.5% {
-        clip: rect(90px, 9999px, 103px, 0);
-    }
-    66.66666666666666% {
-        clip: rect(14px, 9999px, 87px, 0);
-    }
-    70.83333333333334% {
-        clip: rect(31px, 9999px, 103px, 0);
-    }
-    75% {
-        clip: rect(100px, 9999px, 39px, 0);
-    }
-    79.16666666666666% {
-        clip: rect(106px, 9999px, 148px, 0);
-    }
-    83.33333333333334% {
-        clip: rect(10px, 9999px, 86px, 0);
-    }
-    87.5% {
-        clip: rect(100px, 9999px, 90px, 0);
-    }
-    91.66666666666666% {
-        clip: rect(41px, 9999px, 87px, 0);
-    }
-    95.83333333333334% {
-        clip: rect(9px, 9999px, 81px, 0);
-    }
-    100% {
-        clip: rect(9px, 9999px, 101px, 0);
-    }
-}
-@keyframes glitch-anim-2 {
-    6.666666666666667% {
-        clip: rect(129px, 9999px, 137px, 0);
-    }
-    10% {
-        clip: rect(132px, 9999px, 21px, 0);
-    }
-    13.333333333333334% {
-        clip: rect(124px, 9999px, 10px, 0);
-    }
-    16.666666666666664% {
-        clip: rect(77px, 9999px, 21px, 0);
-    }
-    20% {
-        clip: rect(141px, 9999px, 148px, 0);
-    }
-    23.333333333333332% {
-        clip: rect(64px, 9999px, 130px, 0);
-    }
-    26.666666666666668% {
-        clip: rect(51px, 9999px, 115px, 0);
-    }
-    30% {
-        clip: rect(61px, 9999px, 10px, 0);
-    }
-    33.33333333333333% {
-        clip: rect(125px, 9999px, 59px, 0);
-    }
-    36.666666666666664% {
-        clip: rect(46px, 9999px, 44px, 0);
-    }
-    40% {
-        clip: rect(7px, 9999px, 88px, 0);
-    }
-    43.333333333333336% {
-        clip: rect(116px, 9999px, 78px, 0);
-    }
-    46.666666666666664% {
-        clip: rect(84px, 9999px, 40px, 0);
-    }
-    50% {
-        clip: rect(25px, 9999px, 117px, 0);
-    }
-    53.333333333333336% {
-        clip: rect(55px, 9999px, 82px, 0);
-    }
-    56.666666666666664% {
-        clip: rect(22px, 9999px, 145px, 0);
-    }
-    60% {
-        clip: rect(75px, 9999px, 115px, 0);
-    }
-    63.33333333333333% {
-        clip: rect(5px, 9999px, 139px, 0);
-    }
-    66.66666666666666% {
-        clip: rect(61px, 9999px, 40px, 0);
-    }
-    70% {
-        clip: rect(90px, 9999px, 144px, 0);
-    }
-    73.33333333333333% {
-        clip: rect(21px, 9999px, 120px, 0);
-    }
-    76.66666666666667% {
-        clip: rect(60px, 9999px, 144px, 0);
-    }
-    80% {
-        clip: rect(105px, 9999px, 106px, 0);
-    }
-    83.33333333333334% {
-        clip: rect(106px, 9999px, 89px, 0);
-    }
-    86.66666666666667% {
-        clip: rect(72px, 9999px, 90px, 0);
-    }
-    90% {
-        clip: rect(61px, 9999px, 56px, 0);
-    }
-    93.33333333333333% {
-        clip: rect(23px, 9999px, 149px, 0);
-    }
-    96.66666666666667% {
-        clip: rect(134px, 9999px, 90px, 0);
-    }
-    100% {
-        clip: rect(47px, 9999px, 77px, 0);
-    }
-}
-
-/* hovering glitch */
-.glitch-hover-effect {
-    position: relative;
-}
-.glitch-hover-effect:before,
-.glitch-hover-effect:after {
-    content: attr(data-glitch);
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0.8;
-}
-.glitch-hover-effect:after {
-    color: #f0f;
-    z-index: -2;
-}
-.glitch-hover-effect:before {
-    color: #0ff;
-    z-index: -1;
-}
-.glitch-hover-effect:hover:before {
-    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
-}
-.glitch-hover-effect:hover:after {
-    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 5;
-}
-@keyframes glitch {
-    0% {
-        -webkit-transform: translate(0);
-                transform: translate(0);
-    }
-    20% {
-        -webkit-transform: translate(-5px, 5px);
-                transform: translate(-5px, 5px);
-    }
-    40% {
-        -webkit-transform: translate(-5px, -5px);
-                transform: translate(-5px, -5px);
-    }
-    60% {
-        -webkit-transform: translate(5px, 5px);
-                transform: translate(5px, 5px);
-    }
-    80% {
-        -webkit-transform: translate(5px, -5px);
-                transform: translate(5px, -5px);
-    }
-    to {
-        -webkit-transform: translate(0);
-                transform: translate(0);
-    }
 }

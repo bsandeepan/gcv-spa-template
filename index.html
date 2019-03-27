@@ -7,13 +7,13 @@
         <script>
             // detect IE8 or above and stop loading for them
             if(document.documentMode) {
-                alert("We all deserve better things in life.\nI deserve to do better coding without thinking about IE browser compatibility, and you, my friend, deserve a better browser than Internet Explorer.\nTry out Mozilla Firefox tho! :)\n-Sandeepan Bhattacharyya");
+                alert("We all deserve better things in life.\nI deserve to do better coding without thinking about IE browser compatibility, and you, my friend, deserve a better browser than Internet Explorer.\nTry out Mozilla Firefox tho! :)\n-The commbined intellect of all the developers across the Multiverse.");
                 document.execCommand('stop');
             }</script>
         <!-- Author -->
         <meta name="author" content="Sandeepan Bhattacharyya <!bsandeepan95.work@gmail.com>">
         <!-- Title Tag -->
-        <title>A Glitch in your CV!</title>
+        <title id="gcvTitleID"></title>
         <!-- Viewport Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- hide style -->
@@ -246,6 +246,10 @@
                     <div id="tagbuttons" class="buttons are-small">
                         <!-- filter buttons appear here -->
                     </div>
+                    <div id="resultNF" class="hideHard content">
+                        <!-- Result not found statements go here -->
+                        <h3 class="title is-4 has-text-centered glitch-static-effect" data-glitch=""></h3>
+                    </div>
                     <div id="portfoliolist" class="columns is-multiline">
                         <!-- portfolio item columns will go here -->
                     </div>
@@ -279,9 +283,9 @@
                             <legend class="subtitle is-4"><em>Leave a Message</em></legend>
                             <!-- Name -->
                             <div class="field">
-                                <label class="label">Name</label>
+                                <label class="label">Subject</label>
                                 <div class="control has-icons-left">
-                                    <input class="input" name="name" type="text" placeholder="Your Name" required>
+                                    <input class="input" name="_subject" type="text" placeholder="Reason to contact" required>
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -291,7 +295,7 @@
                             <div class="field">
                                 <label class="label">Email</label>
                                 <div class="control has-icons-left">
-                                    <input class="input" type="email" name="email" placeholder="your.name@mail.com" pattern=".+@.+" required>
+                                    <input class="input" type="email" name="_replyto" placeholder="your.name@mail.com" pattern=".+@.+" required>
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-envelope"></i>
                                     </span>
@@ -306,6 +310,8 @@
                                 </div>
                                 <p id="msg-rule" class="help"></p>
                             </div>
+                            <!-- Something More -->
+                            <input class="hideHard" type="text" name="_gotcha">
                             <!-- Submit -->
                             <div class="field is-grouped">
                                 <div class="control">

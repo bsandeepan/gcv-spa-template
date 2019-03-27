@@ -1,7 +1,22 @@
+/**
+ * @copyright Sandeepan Bhattacharyya 2019
+ * @license
+ * This work is licensed under the Creative Commons 
+ *      Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ *      To view a copy of this license, visit 
+ *      http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to 
+ *      Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+ * 
+ * @author Sandeepan Bhattacharyya <bsandeepan95.work@gmail.com>
+ * @file Contains main settings info.
+*/
+
 (function(window) {
     // MODIFY FROM HERE
     var Settings = {
         blog : "https://www.google.com/",
+        projImgRatio: "3by2",
+
         changeTheme : true,
         todayTheme : "rgb(30, 144, 255)",
         colors : [
@@ -13,7 +28,25 @@
             "rgb(252, 130, 82)",
             "rgb(168, 94, 253)"
         ],
-        projImgRatio: "3by2",
+
+        iconHTMLStr : `
+        <link rel="apple-touch-icon" sizes="180x180" href="./resources/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./resources/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./resources/icons/favicon-16x16.png">
+        <link rel="manifest" href="./resources/icons/site.webmanifest">
+        <link rel="mask-icon" href="./resources/icons/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="./resources/icons/favicon.ico">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="msapplication-config" content="./resources/icons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">`,
+
+        RNF : {
+            text: "no projects found for",
+            reason: [
+                ""
+            ]
+        },
+
         preLoad: {
             loaderHeading : "Website is loading faster than this cube running away!",
             loaderHTML : '<div id="loader"><div id="shadow"></div><div id="box"></div></div>',
@@ -23,6 +56,7 @@
                 preloaderJS : ["./js/preloader.js"]
             }
         },
+
         toLoad : {
             Bulma : [
                 "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css",
@@ -33,13 +67,15 @@
                 "https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css",
                 "./css/lib/modal-fx.min.css"
             ],
+            glitchCSS : ["./css/gcvglitch.css"],
             customCSS : ["./css/gcvmain.css"]
         },
+
         lastLoad : {
             FontAwesome : {
                 urls: [
                     "https://use.fontawesome.com/releases/v5.7.2/js/all.js",
-                    "./js/lib/fontawesome/all.js" // having issues
+                    "./js/lib/fontawesome/all.js"
                 ],
                 integrity : "sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP",
                 crossorigin :"anonymous"

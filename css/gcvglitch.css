@@ -1,0 +1,263 @@
+/*==============================================
+  author: Sandeepan Bhattacharyya <bsandeepan95.work@gmail.com>
+  license: This work is licensed under the Creative Commons 
+    Attribution-NonCommercial-ShareAlike 4.0 International License.
+    To view a copy of this license, visit 
+    http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter 
+    to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. 
+==============================================*/
+
+/*
+desc: Contains code for glitch effect(s).
+Content:
+  01. Glitch Effect - Static
+  02. Glitch Effect - Hover
+*/
+
+/* 01. Glitch Effect - Static */
+.glitch-static-effect {
+    position: relative;
+}
+.glitch-static-effect::before,
+.glitch-static-effect::after {
+    content: attr(data-glitch);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.glitch-static-effect::before {
+    left: 1px;
+    text-shadow: -1px 0 #49FC00;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+.glitch-static-effect::after {
+    left: -1px;
+    text-shadow: -1px 0 #b300fc;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim-1 {
+    0% {
+        clip: rect(42px, 9999px, 5px, 0);
+    }
+    4.166666666666666% {
+        clip: rect(55px, 9999px, 54px, 0);
+    }
+    8.333333333333332% {
+        clip: rect(73px, 9999px, 132px, 0);
+    }
+    12.5% {
+        clip: rect(17px, 9999px, 70px, 0);
+    }
+    16.666666666666664% {
+        clip: rect(63px, 9999px, 142px, 0);
+    }
+    20.833333333333336% {
+        clip: rect(53px, 9999px, 68px, 0);
+    }
+    25% {
+        clip: rect(45px, 9999px, 131px, 0);
+    }
+    29.166666666666668% {
+        clip: rect(15px, 9999px, 97px, 0);
+    }
+    33.33333333333333% {
+        clip: rect(8px, 9999px, 62px, 0);
+    }
+    37.5% {
+        clip: rect(25px, 9999px, 81px, 0);
+    }
+    41.66666666666667% {
+        clip: rect(150px, 9999px, 106px, 0);
+    }
+    45.83333333333333% {
+        clip: rect(29px, 9999px, 116px, 0);
+    }
+    50% {
+        clip: rect(68px, 9999px, 143px, 0);
+    }
+    54.166666666666664% {
+        clip: rect(73px, 9999px, 86px, 0);
+    }
+    58.333333333333336% {
+        clip: rect(83px, 9999px, 21px, 0);
+    }
+    62.5% {
+        clip: rect(90px, 9999px, 103px, 0);
+    }
+    66.66666666666666% {
+        clip: rect(14px, 9999px, 87px, 0);
+    }
+    70.83333333333334% {
+        clip: rect(31px, 9999px, 103px, 0);
+    }
+    75% {
+        clip: rect(100px, 9999px, 39px, 0);
+    }
+    79.16666666666666% {
+        clip: rect(106px, 9999px, 148px, 0);
+    }
+    83.33333333333334% {
+        clip: rect(10px, 9999px, 86px, 0);
+    }
+    87.5% {
+        clip: rect(100px, 9999px, 90px, 0);
+    }
+    91.66666666666666% {
+        clip: rect(41px, 9999px, 87px, 0);
+    }
+    95.83333333333334% {
+        clip: rect(9px, 9999px, 81px, 0);
+    }
+    100% {
+        clip: rect(9px, 9999px, 101px, 0);
+    }
+}
+@keyframes glitch-anim-2 {
+    6.666666666666667% {
+        clip: rect(129px, 9999px, 137px, 0);
+    }
+    10% {
+        clip: rect(132px, 9999px, 21px, 0);
+    }
+    13.333333333333334% {
+        clip: rect(124px, 9999px, 10px, 0);
+    }
+    16.666666666666664% {
+        clip: rect(77px, 9999px, 21px, 0);
+    }
+    20% {
+        clip: rect(141px, 9999px, 148px, 0);
+    }
+    23.333333333333332% {
+        clip: rect(64px, 9999px, 130px, 0);
+    }
+    26.666666666666668% {
+        clip: rect(51px, 9999px, 115px, 0);
+    }
+    30% {
+        clip: rect(61px, 9999px, 10px, 0);
+    }
+    33.33333333333333% {
+        clip: rect(125px, 9999px, 59px, 0);
+    }
+    36.666666666666664% {
+        clip: rect(46px, 9999px, 44px, 0);
+    }
+    40% {
+        clip: rect(7px, 9999px, 88px, 0);
+    }
+    43.333333333333336% {
+        clip: rect(116px, 9999px, 78px, 0);
+    }
+    46.666666666666664% {
+        clip: rect(84px, 9999px, 40px, 0);
+    }
+    50% {
+        clip: rect(25px, 9999px, 117px, 0);
+    }
+    53.333333333333336% {
+        clip: rect(55px, 9999px, 82px, 0);
+    }
+    56.666666666666664% {
+        clip: rect(22px, 9999px, 145px, 0);
+    }
+    60% {
+        clip: rect(75px, 9999px, 115px, 0);
+    }
+    63.33333333333333% {
+        clip: rect(5px, 9999px, 139px, 0);
+    }
+    66.66666666666666% {
+        clip: rect(61px, 9999px, 40px, 0);
+    }
+    70% {
+        clip: rect(90px, 9999px, 144px, 0);
+    }
+    73.33333333333333% {
+        clip: rect(21px, 9999px, 120px, 0);
+    }
+    76.66666666666667% {
+        clip: rect(60px, 9999px, 144px, 0);
+    }
+    80% {
+        clip: rect(105px, 9999px, 106px, 0);
+    }
+    83.33333333333334% {
+        clip: rect(106px, 9999px, 89px, 0);
+    }
+    86.66666666666667% {
+        clip: rect(72px, 9999px, 90px, 0);
+    }
+    90% {
+        clip: rect(61px, 9999px, 56px, 0);
+    }
+    93.33333333333333% {
+        clip: rect(23px, 9999px, 149px, 0);
+    }
+    96.66666666666667% {
+        clip: rect(134px, 9999px, 90px, 0);
+    }
+    100% {
+        clip: rect(47px, 9999px, 77px, 0);
+    }
+}
+
+/* 02. Glitch Effect - Hover */
+.glitch-hover-effect {
+    position: relative;
+}
+.glitch-hover-effect:before,
+.glitch-hover-effect:after {
+    content: attr(data-glitch);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+}
+.glitch-hover-effect:after {
+    color: #f0f;
+    z-index: -2;
+}
+.glitch-hover-effect:before {
+    color: #0ff;
+    z-index: -1;
+}
+.glitch-hover-effect:hover:before {
+    animation: glitch 0.25s cubic-bezier(0.25, 0.5, 0.4, 0.96) both 5;
+}
+.glitch-hover-effect:hover:after {
+    animation: glitch 0.25s cubic-bezier(0.25, 0.5, 0.4, 0.96) reverse both 5;
+}
+@keyframes glitch {
+    0% {
+        -webkit-transform: translate(0);
+                transform: translate(0);
+    }
+    20% {
+        -webkit-transform: translate(-5px, 5px);
+                transform: translate(-5px, 5px);
+    }
+    40% {
+        -webkit-transform: translate(-5px, -5px);
+                transform: translate(-5px, -5px);
+    }
+    60% {
+        -webkit-transform: translate(5px, 5px);
+                transform: translate(5px, 5px);
+    }
+    80% {
+        -webkit-transform: translate(5px, -5px);
+                transform: translate(5px, -5px);
+    }
+    to {
+        -webkit-transform: translate(0);
+                transform: translate(0);
+    }
+}

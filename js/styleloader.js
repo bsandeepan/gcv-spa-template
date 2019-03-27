@@ -55,6 +55,9 @@
             document.querySelector(".navbar-start").insertAdjacentHTML('afterbegin', blogLink); 
         }
 
+        // add the link tags
+        document.getElementById("gcvTitleID").insertAdjacentHTML('afterend', Settings.iconHTMLStr);
+
         // Footer credits
         let copyright, year, projectName, authorCred, sourceCode, creditsStr;
         copyright = `<i class="far fa-copyright"></i>`;
