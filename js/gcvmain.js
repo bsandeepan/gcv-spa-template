@@ -359,7 +359,7 @@
                 langRowList += langRow;
 
                 // generatign a list for language list
-                langItem = `<li>${el.lang_name}<ul><li>${el.level}</li><li>${el.cert}</li></ul></li>`;
+                langItem = `<li>${el.lang_name}<ul><li>Level: ${el.level}</li><li>Cert: ${el.cert}</li></ul></li>`;
                 langItemList += langItem;
             });
             // creating the final table body html string

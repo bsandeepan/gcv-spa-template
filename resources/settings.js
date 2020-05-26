@@ -52,43 +52,41 @@
             loaderHTML : '<div id="loader"><div id="shadow"></div><div id="box"></div></div>',
             targetID : "box",
             loaderFiles : {
-                preloaderCSS : ["../css/preloader.css"],
-                preloaderJS : ["../js/preloader.js"]
+                preloaderCSS : ["./css/preloader.css"],
+                preloaderJS : ["./js/preloader.js"]
             }
         },
 
         frameLoad: {
-            frameCSS : ["../css/framelines.css"],
-            frameJS : ["../js/framelines.js"]
+            frameCSS : ["./css/framelines.css"],
+            frameJS : ["./js/framelines.js"]
         },
 
         toLoad : {
             Bulma : [
                 "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css",
                 "https://cdn.jsdelivr.net/npm/bulma@0.7.4/css/bulma.min.css",
-                "../css/lib/bulma.min.css"
+                "./css/lib/bulma.min.css"
             ],
             ModalFX : [
                 "https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css",
-                "../css/lib/modal-fx.min.css"
+                "./css/lib/modal-fx.min.css"
             ],
-            glitchCSS : ["../css/gcvglitch.css"],
-            customCSS : ["../css/gcvmain.css"]
+            glitchCSS : ["./css/gcvglitch.css"],
+            customCSS : ["./css/gcvmain.css"]
         },
 
         lastLoad : {
             FontAwesome : {
                 urls: [
                     "https://use.fontawesome.com/releases/v5.7.2/js/all.js",
-                    "../js/lib/fontawesome/all.js"
-                ],
-                integrity : "sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP",
-                crossorigin :"anonymous"
+                    "./js/lib/fontawesome/all.js"
+                ]
             },
             DevIcon : {
                 urls: [
                     "https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css",
-                    "../css/lib/devicon.min.css"
+                    "./css/lib/devicon.min.css"
                 ]
             }
         }
