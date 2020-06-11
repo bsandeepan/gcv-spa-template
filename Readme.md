@@ -1,8 +1,15 @@
+<!-- All content in this file is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. -->
 # Project: GlitchCV Website Template
 
 **_Details_ :** A CV/Portfolio Single Page Website template for individual use with custom CLI-based CMS, helping you to change information in your CV website as you require. Beware! There will be a Glitch in your CV! :)  
 
-**_License Info_ :** <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">GCV SPA</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/bsandeepan95" property="cc:attributionName" rel="cc:attributionURL">Sandeepan Bhattacharyya</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. To view a copy of this license, See the local **LICENSE** file or visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.  
+**_License Info_ :** GlitchCV SPA (also known as GCV SPA) uses two separate licenses -
+
+1. the code structure and underlying logic of GCV SPA template is licensed under [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.en.html). The author requests all users, and developers who modify the source code, to not remove the existing footer credit. To view a copy of this license, See the local **LICENSE-code** file.
+
+2. <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">All dummy content and original artowork(s) in GCV SPA</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/bsandeepan95" property="cc:attributionName" rel="cc:attributionURL">Sandeepan Bhattacharyya</a> is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. To view a copy of this license, See the local **LICENSE-content** file or visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA. Aside the dummy data content, this license also ,without any exception(s), covers -
+    - The existing logo image of GCV SPA created by [Sandeepan Sengupta](https://github.com/SandeepanSengupta). 
+    - The content of all markdown files and all documentation comments found in files in `./src` folder of this project.
 
 ----
 
@@ -43,6 +50,8 @@ If you think you can make any improvements here (incl. the above sighs), fork th
 
 ### Resources:
 <!-- Name of code resources.   -->
+CSS: [Bulma Framework](https://bulma.io/)  
+Icons: [FontAwsome][FAdocs] and [Devicon](http://konpa.github.io/devicon/)  
 
 ----
 # Thanks!
