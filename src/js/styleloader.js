@@ -65,7 +65,7 @@
         authorCred = `Sandeepan B.`;
         projectName = `GCV SPA`;
         sourceCode = `<a target="_blank" href="https://github.com/bsandeepan95/gcv-spa-template" style="color: ${Settings.todayTheme};">${projectName}</a>`;
-        creditsStr = `${copyright} ${year} ${sourceCode}. Made by ${authorCred}`;
+        creditsStr = `${copyright} ${year} ${sourceCode} by ${authorCred}`;
         document.getElementById("credits").insertAdjacentHTML('afterbegin', creditsStr);
 
         // load the last scripts

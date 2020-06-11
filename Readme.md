@@ -31,7 +31,7 @@ To start, you need to know how to work with **JS Object** format. You can start 
 -  `data.js` file contains all of your necessary information to configure the website. This **KEY** file should be updated whenever you want to make any changes in content.
 - `settings.js` file contains few dynamic settings information. In **most** cases, you may not need to configure this file at all. Ideally, unless you know how [Arrays][infoArray], [CDNs][infoCDN], [Fallback Methods][FBMbasics] work, you should not touch this file with confidence.
 
-Proceed to [User Manual](./Manual-User.md) to learn more.
+Proceed to [User Manual](./docs/Manual-User.md) to learn more.
 
 ### Future Improvements:
 I have these improvements in mind - 
