@@ -19,8 +19,8 @@
     // MODIFY FROM HERE
     var Data = {
         landing : {
-            pageTitle : "",
-            brandName : "GlitchCV SPA",
+            pageTitle : "GlitchCV SPA",
+            brandName : "GlitchCV",
             greeting : "Hi!",
             displayName : "Sandeepan",
             taglineWork : "Web Developer and Nihilist."

@@ -17,6 +17,7 @@
 (function(window) {
     // MODIFY FROM HERE
     var Settings = {
+        homepage: "./index.html",
         blog : "https://wordpress.com/create-blog/",
         projImgRatio: "3by2",
 
@@ -92,6 +93,18 @@
                     "./css/lib/devicon.min.css"
                 ]
             }
+        },
+        
+        errPageLoad: {
+            Bulma : [
+                "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css",
+                "https://cdn.jsdelivr.net/npm/bulma@0.7.4/css/bulma.min.css",
+                "../css/lib/bulma.min.css"
+            ],
+            frameCSS : ["../css/framelines.css"],
+            frameJS : ["../js/framelines.js"],
+            glitchCSS : ["../css/gcvglitch.css"],
+            errCSS : ["../css/errorpage.css"]
         }
     };
 

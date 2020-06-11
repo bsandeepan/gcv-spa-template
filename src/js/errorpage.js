@@ -10,7 +10,7 @@
  *      Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
  * 
  * @author Sandeepan Bhattacharyya <bsandeepan95.work@gmail.com>
- * @file This script sets framelines styling dynamically.
+ * @file This script sets error pages dynamically.
 */
 
 (function(){
@@ -26,11 +26,12 @@
     let today = new Date();
     // if changeTheme is true, get the theme color for today
     if(Settings.changeTheme) Settings.todayTheme = Settings.colors[today.getDay()];
-    // load framelines stylling
-    fallback.load(Settings.frameLoad);
-    // load bulma
-    fallback.load(Settings.toLoad);
+    // load error page styling
+    fallback.load(Settings.errPageLoad);
     // color the button
     let myBtns = getAll(".is-btn-special");
-     myBtns.forEach(el => {el.style.backgroundColor = Settings.todayTheme;});
+     myBtns.forEach(el => {
+         el.style.backgroundColor = Settings.todayTheme;
+         el.href = `.${Settings.homepage}`;
+        });
 })();

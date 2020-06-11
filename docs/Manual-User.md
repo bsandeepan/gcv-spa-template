@@ -239,15 +239,17 @@ Structure of `data.js` is as below -
 ### Configuring `settings.js`:
 Structure of `settings.js` is as below -  
 
-1. `blog` : A url to your blog site. If you have a blog, put the link here and a "Blog" button will appear in Navigation Bar. If you do not have any, keep this field empty.  
+1. `homepage`: contains the url for the index HTML file. No need to modify unless your mail HTML page is named otherwise, for example, `default.html`.
 
-2. `projImgRatio` : Bulma CSS class to determine imag ratio for the project images in protfolio grid.
+2. `blog` : A url to your blog site. If you have a blog, put the link here and a "Blog" button will appear in Navigation Bar. If you do not have any, keep this field empty.  
 
-3. `changeTheme` : A Boolean switch to enable daily theme color change. Set to `true` by default.  
+3. `projImgRatio` : Bulma CSS class to determine imag ratio for the project images in protfolio grid.
 
-4. `todayTheme` : Theme color by default is _dodgerblue_. If `changeTheme` is not disabled, then it will change on daily basis.  
+4. `changeTheme` : A Boolean switch to enable daily theme color change. Set to `true` by default.  
 
-5. `colors` : An array of seven colors for seven days of week. It matches with the output of Javascript's Date() object's getDay() method and sets the color accordingly. The structure is as follows -  
+5. `todayTheme` : Theme color by default is _dodgerblue_. If `changeTheme` is not disabled, then it will change on daily basis.  
+
+6. `colors` : An array of seven colors for seven days of week. It matches with the output of Javascript's Date() object's getDay() method and sets the color accordingly. The structure is as follows -  
 
 | Array Index | Day of Week | Colors |
 |:---:|:--- |:--- |
@@ -261,17 +263,21 @@ Structure of `settings.js` is as below -
 
 If you desire to change the color of Wednesday, you will have to quote the color code (hex or rgb or whatevet) in "" and paste it in the 4th position i.e. 3rd index of the array.  
 
-6. `iconHTMLStr` : String of HTML Link Tags for favicon. You may not need to change this. Just generate your own favicon and put it in respective folder.
+7. `iconHTMLStr` : String of HTML Link Tags for favicon. You may not need to change this. Just generate your own favicon and put it in respective folder.
 
-7. `RNF`: DO NOT CHANGE.
+8. `RNF`: DO NOT CHANGE.
 
-8. `preLoad` : An JS Object that contains scripts that needs to be loaded. **_PLEASE DO NOT REMOVE ** the scripts pre-added there._ Also, read about how `fallback.js` works [here][fallbackGithubDoc] and this [article][FBMfallbackjs] to understand why and how `fallback.load()` works and how `Settings.preload` works with it. 
+9. **Note** : The following point _10 to 14_ are very important JS Objects that are integral parts of this website template. **PLEASE DO NOT REMOVE** these sections without sufficient knowledge of how `fallback.js` works. Read the [Dcumentation of fallbackJS][fallbackGithubDoc] and this [article][FBMfallbackjs] first.
 
-9. `frameLoad`: Same as preload.
+10. `preLoad` : A JS Object that contains scripts that needs to be loaded for the loading animation. 
 
-10. `toLoad` : An JS object that contains scripts that needs to be loaded. **_PLEASE DO NOT REMOVE ** the scripts pre-added there._ Also, read about how `fallback.js` works [here][fallbackGithubDoc] and this [article][FBMfallbackjs] to understand why and how `fallback.load()` works and how `Settings.toload` works with it. 
+11. `frameLoad`: A JS Object that contains scripts that needs to be loaded for the frame around the webpage.
 
-11. `lastload` : Same as toload.
+12. `toLoad` : A JS object that contains scripts that needs to be loaded for the main page.
+
+13. `lastload` :  A JS object that contains scripts that loads the remaining scripts.
+
+14. `errPageLoad` : A JS Object that contains scripts that needs to be loaded for the error HTML pages. 
 
 ----
 # Thanks!
