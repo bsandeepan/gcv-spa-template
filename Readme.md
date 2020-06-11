@@ -21,7 +21,7 @@
 - [Resources](#resources)
 
 ## Annoucement: 
-This is the version 0.1.0. Stable version coming soon!
+Version 1.0.0 has been released! Kindly check the releases. If you detect any bugs, kindly raise an issue. Thanks!
 
 ### Introduction:
 GlitchCV is a personal single page static CV/Portfolio website template. It is minimalistic, user-friendly, fully responsive, and most-importantly, "dynamically static".
