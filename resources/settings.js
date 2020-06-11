@@ -14,19 +14,19 @@
 (function(window) {
     // MODIFY FROM HERE
     var Settings = {
-        blog : "https://www.google.com/",
+        blog : "https://wordpress.com/create-blog/",
         projImgRatio: "3by2",
 
         changeTheme : true,
         todayTheme : "rgb(30, 144, 255)",
         colors : [
-            "rgb(30, 144, 255)",
-            "rgb(251, 119, 119)",
+            "rgb(34, 89, 145)",
+            "rgb(173, 41, 41)",
+            "rgb(130, 101, 146)",
             "rgb(107, 142, 35)",
-            "rgb(165, 157, 40)",
             "rgb(32, 178, 170)",
-            "rgb(252, 130, 82)",
-            "rgb(168, 94, 253)"
+            "rgb(134, 127, 22)",
+            "rgb(207, 91, 44)"
         ],
 
         iconHTMLStr : `<!-- Link Tags -->

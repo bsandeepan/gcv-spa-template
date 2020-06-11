@@ -16,7 +16,7 @@
     var Data = {
         landing : {
             pageTitle : "",
-            brandName : "Sandeepan B.",
+            brandName : "GlitchCV SPA",
             greeting : "Hi!",
             displayName : "Sandeepan",
             taglineWork : "Web Developer and Nihilist."
@@ -69,7 +69,8 @@
                     studyDesc : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, sed.",
                     highlights : [
                         "welp, survived somehow!",
-                        "almost commited suicide. :)"
+                        "Had aspirations when enrolled.",
+                        "Dead inside post graduation."
                     ]
                 },
                 {
@@ -87,8 +88,8 @@
                     under : "W.B.B.S.E. (West Bengal Board of Secondary Education)",
                     studyDesc : "Lorem adipisicing elit. Exercitationem, sed.",
                     highlights : [
-                        "Had about 3 friends in ten years.",
-                        "One of them is still a psycho."
+                        "Ingorance is bliss.",
+                        "Life was... okay."
                     ]
                 }
             ],
